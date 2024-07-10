@@ -12,6 +12,11 @@
 		B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */; };
 		B8268AF02C3E5A7B00B3FB89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */; };
 		B8268AF32C3E5A7B00B3FB89 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B8268AF22C3E5A7B00B3FB89 /* Base */; };
+		B8268AFE2C3E6AD700B3FB89 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B8268AFD2C3E6AD700B3FB89 /* RxBlocking */; };
+		B8268B002C3E6AD700B3FB89 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B8268AFF2C3E6AD700B3FB89 /* RxCocoa */; };
+		B8268B022C3E6AD700B3FB89 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B012C3E6AD700B3FB89 /* RxRelay */; };
+		B8268B042C3E6AD700B3FB89 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B032C3E6AD700B3FB89 /* RxSwift */; };
+		B8268B062C3E6AD700B3FB89 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B052C3E6AD700B3FB89 /* RxTest */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B062C3E6AD700B3FB89 /* RxTest in Frameworks */,
+				B8268B022C3E6AD700B3FB89 /* RxRelay in Frameworks */,
+				B8268B002C3E6AD700B3FB89 /* RxCocoa in Frameworks */,
+				B8268B042C3E6AD700B3FB89 /* RxSwift in Frameworks */,
+				B8268AFE2C3E6AD700B3FB89 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +90,13 @@
 			dependencies = (
 			);
 			name = ETSmallProject;
+			packageProductDependencies = (
+				B8268AFD2C3E6AD700B3FB89 /* RxBlocking */,
+				B8268AFF2C3E6AD700B3FB89 /* RxCocoa */,
+				B8268B012C3E6AD700B3FB89 /* RxRelay */,
+				B8268B032C3E6AD700B3FB89 /* RxSwift */,
+				B8268B052C3E6AD700B3FB89 /* RxTest */,
+			);
 			productName = ETSmallProject;
 			productReference = B8268AE32C3E5A7A00B3FB89 /* ETSmallProject.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +125,9 @@
 				Base,
 			);
 			mainGroup = B8268ADA2C3E5A7A00B3FB89;
+			packageReferences = (
+				B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = B8268AE42C3E5A7A00B3FB89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,6 +371,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8268AFD2C3E6AD700B3FB89 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		B8268AFF2C3E6AD700B3FB89 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B8268B012C3E6AD700B3FB89 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B8268B032C3E6AD700B3FB89 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B8268B052C3E6AD700B3FB89 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8268ADB2C3E5A7A00B3FB89 /* Project object */;
 }
