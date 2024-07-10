@@ -4,6 +4,7 @@ class MusicSearchViewController: UIViewController {
 	private let searchTitleLabel = UILabel()
 	private let searchTextField = SearchTextField()
 	private let searchButton = UIButton()
+	private lazy var collectionView = makeCollectionView()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -13,6 +14,7 @@ class MusicSearchViewController: UIViewController {
 		setupViews()
 		setupConstraints()
 	}
+	
 }
 
 extension MusicSearchViewController {
@@ -20,13 +22,15 @@ extension MusicSearchViewController {
 		view.addSubview(searchTitleLabel)
 		view.addSubview(searchTextField)
 		view.addSubview(searchButton)
+		view.addSubview(collectionView)
 	}
 	
 	private func setupViews() {
 		searchTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 		searchTextField.translatesAutoresizingMaskIntoConstraints = false
 		searchButton.translatesAutoresizingMaskIntoConstraints = false
-
+		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		
 		searchTitleLabel.text = "Search Music"
 		searchTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
 		
@@ -64,6 +68,26 @@ extension MusicSearchViewController {
 			searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
 			searchButton.heightAnchor.constraint(equalToConstant: 42)
 		])
+		
+		NSLayoutConstraint.activate([
+			collectionView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 12),
+			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
+	}
+	
+	private func makeCollectionView() -> UICollectionView {
+		let layout = UICollectionViewCompositionalLayout.list(
+			using: UICollectionLayoutListConfiguration(
+				appearance: .plain
+			)
+		)
+		
+		return UICollectionView(
+			frame: .zero,
+			collectionViewLayout: layout
+		)
 	}
 }
 
