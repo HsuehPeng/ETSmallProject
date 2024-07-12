@@ -29,8 +29,12 @@ final class MusicSearchViewController: UIViewController {
 	}
 	
 	private func bindViewModel() {
-		let searchTermDriver = searchTextField.rx.text.orEmpty.asDriver()
-		let outPut = viewModel.transform(input: .init(searchTermDriver: searchTermDriver))
+		let outPut = viewModel.transform(
+			input: .init(
+				searchTermDriver: searchTextField.rx.text.orEmpty.asDriver(),
+				searchButtonTapSignal: searchButton.rx.tap.asSignal()
+			)
+		)
 	}
 }
 

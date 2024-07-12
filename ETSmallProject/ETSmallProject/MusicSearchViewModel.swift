@@ -7,6 +7,7 @@ final class MusicSearchViewModel {
 
 	func transform(input: Input) -> Output {
 		let searchTermDriver = input.searchTermDriver.debounce(.milliseconds(300))
+				
 		searchTermDriver.drive(onNext: { term in
 			print(term)
 		}).disposed(by: disposebag)
@@ -17,6 +18,7 @@ final class MusicSearchViewModel {
 extension MusicSearchViewModel {
 	struct Input {
 		let searchTermDriver: Driver<String>
+		let searchButtonTapSignal: Signal<Void>
 	}
 	
 	struct Output {
