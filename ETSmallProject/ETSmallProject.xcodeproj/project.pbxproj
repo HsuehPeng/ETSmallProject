@@ -21,6 +21,8 @@
 		B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */; };
 		B8268B1A2C3E8A5000B3FB89 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */; };
 		B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */; };
+		B8268B1F2C4131BE00B3FB89 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B1E2C4131BE00B3FB89 /* RxDataSources */; };
+		B8268B212C41320400B3FB89 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B202C41320400B3FB89 /* Differentiator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 				B8268B022C3E6AD700B3FB89 /* RxRelay in Frameworks */,
 				B8268B002C3E6AD700B3FB89 /* RxCocoa in Frameworks */,
 				B8268B042C3E6AD700B3FB89 /* RxSwift in Frameworks */,
+				B8268B1F2C4131BE00B3FB89 /* RxDataSources in Frameworks */,
+				B8268B212C41320400B3FB89 /* Differentiator in Frameworks */,
 				B8268AFE2C3E6AD700B3FB89 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +146,8 @@
 				B8268AFF2C3E6AD700B3FB89 /* RxCocoa */,
 				B8268B012C3E6AD700B3FB89 /* RxRelay */,
 				B8268B032C3E6AD700B3FB89 /* RxSwift */,
+				B8268B1E2C4131BE00B3FB89 /* RxDataSources */,
+				B8268B202C41320400B3FB89 /* Differentiator */,
 			);
 			productName = ETSmallProject;
 			productReference = B8268AE32C3E5A7A00B3FB89 /* ETSmallProject.app */;
@@ -198,6 +204,7 @@
 			mainGroup = B8268ADA2C3E5A7A00B3FB89;
 			packageReferences = (
 				B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B8268B1D2C4131BE00B3FB89 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = B8268AE42C3E5A7A00B3FB89 /* Products */;
 			projectDirPath = "";
@@ -524,6 +531,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		B8268B1D2C4131BE00B3FB89 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -551,6 +566,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8268AFC2C3E6AD600B3FB89 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		B8268B1E2C4131BE00B3FB89 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268B1D2C4131BE00B3FB89 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		B8268B202C41320400B3FB89 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8268B1D2C4131BE00B3FB89 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
