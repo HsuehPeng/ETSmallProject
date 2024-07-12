@@ -1,6 +1,6 @@
 import UIKit
 
-class MusicSearchViewController: UIViewController {
+final class MusicSearchViewController: UIViewController {
 	private let searchTitleLabel = UILabel()
 	private let searchTextField = SearchTextField()
 	private let searchButton = UIButton()
@@ -14,7 +14,6 @@ class MusicSearchViewController: UIViewController {
 		setupViews()
 		setupConstraints()
 	}
-	
 }
 
 extension MusicSearchViewController {
@@ -90,4 +89,3 @@ extension MusicSearchViewController {
 		)
 	}
 }
-
