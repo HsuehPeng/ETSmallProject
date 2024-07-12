@@ -1,4 +1,5 @@
 import UIKit
+import RxCocoa
 
 final class MusicSearchViewController: UIViewController {
 	private let searchTitleLabel = UILabel()
@@ -24,6 +25,12 @@ final class MusicSearchViewController: UIViewController {
 		setupViewHierarchy()
 		setupViews()
 		setupConstraints()
+		bindViewModel()
+	}
+	
+	private func bindViewModel() {
+		let searchTermDriver = searchTextField.rx.text.orEmpty.asDriver()
+		let outPut = viewModel.transform(input: .init(searchTermDriver: searchTermDriver))
 	}
 }
 

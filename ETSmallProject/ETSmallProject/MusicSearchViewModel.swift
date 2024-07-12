@@ -1,20 +1,28 @@
 import Foundation
+import RxCocoa
+import RxSwift
 
 final class MusicSearchViewModel {
+	private let disposebag = DisposeBag()
+
+	func transform(input: Input) -> Output {
+		let searchTermDriver = input.searchTermDriver.debounce(.milliseconds(300))
+		searchTermDriver.drive(onNext: { term in
+			print(term)
+		}).disposed(by: disposebag)
+		return .init()
+	}
+}
+
+extension MusicSearchViewModel {
 	struct Input {
-		
+		let searchTermDriver: Driver<String>
 	}
 	
 	struct Output {
 		
 	}
 	
-	func transform(input: Input) -> Output {
-		return .init()
-	}
-}
-
-extension MusicSearchViewModel {
 	struct Constants {
 		static let searchMusicTitle = "Search Music"
 		static let searchPlaceHolder = "Enter keyword here"
