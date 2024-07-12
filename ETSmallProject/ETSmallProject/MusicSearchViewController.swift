@@ -30,7 +30,7 @@ extension MusicSearchViewController {
 		searchButton.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		
-		searchTitleLabel.text = "Search Music"
+		searchTitleLabel.text = MusicSearchViewModel.Constants.searchMusicTitle
 		searchTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
 		
 		let placeHolderAttributes: [NSAttributedString.Key: Any] = [
@@ -38,11 +38,11 @@ extension MusicSearchViewController {
 			.foregroundColor: UIColor.black.withAlphaComponent(0.5)
 		]
 		
-		searchTextField.attributedPlaceholder = NSAttributedString(string: "Enter keyword here", attributes: placeHolderAttributes)
+		searchTextField.attributedPlaceholder = NSAttributedString(string: MusicSearchViewModel.Constants.searchPlaceHolder, attributes: placeHolderAttributes)
 		
 		searchButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
 		searchButton.titleLabel?.textColor = UIColor.white
-		searchButton.setTitle("Search", for: .normal)
+		searchButton.setTitle(MusicSearchViewModel.Constants.searchButtonTitle, for: .normal)
 		searchButton.layer.cornerRadius = 8
 		searchButton.backgroundColor = UIColor.black
 	}
