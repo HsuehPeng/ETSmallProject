@@ -6,9 +6,12 @@ final class MusicSearchViewModel {
 	private let disposebag = DisposeBag()
 
 	func transform(input: Input) -> Output {
-		let searchTermDriver = input.searchTermDriver.debounce(.milliseconds(300))
+		let searchMusicObservable = Observable.merge([
+			input.searchTermDriver.debounce(.milliseconds(300)).asObservable(),
+			input.searchButtonTapSignal.withLatestFrom(input.searchTermDriver).asObservable()
+		])
 				
-		searchTermDriver.drive(onNext: { term in
+		searchMusicObservable.subscribe(onNext: { term in
 			print(term)
 		}).disposed(by: disposebag)
 		return .init()
