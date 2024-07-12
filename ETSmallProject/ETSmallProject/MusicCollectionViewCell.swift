@@ -22,6 +22,12 @@ final class MusicCollectionViewCell: UICollectionViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	func configure(with viewModel: MusicCollectionViewCellViewModel) {
+		trackNameLabel.text = viewModel.trackName
+		trackTimeLabel.text = viewModel.trackTime
+		descriptionLabel.text = viewModel.longDescription
+	}
 }
 
 extension MusicCollectionViewCell {
@@ -98,5 +104,24 @@ extension MusicCollectionViewCell {
 			musicImageView.widthAnchor.constraint(equalToConstant: 100),
 			musicImageView.heightAnchor.constraint(equalToConstant: 100)
 		])
+	}
+}
+
+final class MusicCollectionViewCellViewModel {
+	let trackName: String
+	let trackTime: String
+	let imageUrlString: String
+	let longDescription: String?
+	
+	init(
+		trackName: String,
+		trackTime: String,
+		imageUrlString: String,
+		longDescription: String?
+	) {
+		self.trackName = trackName
+		self.trackTime = trackTime
+		self.imageUrlString = imageUrlString
+		self.longDescription = longDescription
 	}
 }

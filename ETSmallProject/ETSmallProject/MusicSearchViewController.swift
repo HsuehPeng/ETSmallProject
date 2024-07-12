@@ -1,5 +1,7 @@
 import UIKit
 import RxCocoa
+import RxDataSources
+import RxSwift
 
 final class MusicSearchViewController: UIViewController {
 	private let searchTitleLabel = UILabel()
@@ -8,6 +10,7 @@ final class MusicSearchViewController: UIViewController {
 	private lazy var collectionView = makeCollectionView()
 	
 	private let viewModel: MusicSearchViewModel
+	private let disposeBag = DisposeBag()
 	
 	init(viewModel: MusicSearchViewModel) {
 		self.viewModel = viewModel
@@ -35,6 +38,20 @@ final class MusicSearchViewController: UIViewController {
 				searchButtonTapSignal: searchButton.rx.tap.asSignal()
 			)
 		)
+		
+		let dataSource = RxCollectionViewSectionedReloadDataSource<MusicSearchViewModel.SectionModel>(
+			configureCell: { dataSource, collectionView, indexPath, item in
+				switch item {
+				case let .music(viewModel):
+					guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MusicCollectionViewCell.self)", for: indexPath)
+							as? MusicCollectionViewCell else { return UICollectionViewCell() }
+					cell.configure(with: viewModel)
+					return cell
+				}
+			}
+		)
+		
+		outPut.dataSourceDriver.drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 	}
 }
 
@@ -67,6 +84,8 @@ extension MusicSearchViewController {
 		searchButton.setTitle(MusicSearchViewModel.Constants.searchButtonTitle, for: .normal)
 		searchButton.layer.cornerRadius = 8
 		searchButton.backgroundColor = UIColor.black
+		
+		collectionView.register(MusicCollectionViewCell.self, forCellWithReuseIdentifier: "\(MusicCollectionViewCell.self)")
 	}
 	
 	private func setupConstraints() {
