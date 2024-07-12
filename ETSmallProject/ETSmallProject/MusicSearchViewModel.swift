@@ -1,7 +1,17 @@
 import Foundation
 
 final class MusicSearchViewModel {
+	struct Input {
+		
+	}
 	
+	struct Output {
+		
+	}
+	
+	func transform(input: Input) -> Output {
+		return .init()
+	}
 }
 
 extension MusicSearchViewModel {
