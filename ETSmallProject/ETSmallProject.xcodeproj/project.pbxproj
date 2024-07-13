@@ -159,7 +159,6 @@
 			children = (
 				B8268B252C42517100B3FB89 /* Music.swift */,
 				B8268B272C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift */,
-				B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */,
 				B8268B292C425E3600B3FB89 /* MusicError.swift */,
 			);
 			path = Domain;
@@ -181,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */,
+				B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
