@@ -26,14 +26,14 @@ final class MusicSearchViewModel {
 			return try? result.get()
 		}
 		
-		let fetchMusicErrorObservable: Observable<MusicError> = fetchMusicResultObservable.compactMap { result in
+		let fetchMusicErrorDriver: Driver<MusicError> = fetchMusicResultObservable.compactMap { result in
 			switch result {
 			case .success:
 				return nil
 			case let .failure(error):
 				return error
 			}
-		}
+		}.asDriver(onErrorJustReturn: .unknown)
 		
 		let musicSectionDriver: Driver<[SectionModel]> = fetchMusicSuccessObservabl.map({ musics in
 			let musicItems = musics.map { music in
@@ -58,7 +58,10 @@ final class MusicSearchViewModel {
 			loadingSectionDriver
 		)
 		
-		return Output(dataSourceDriver: dataSourceDriver)
+		return Output(
+			dataSourceDriver: dataSourceDriver,
+			errorAlertDriver: fetchMusicErrorDriver
+		)
 	}
 }
 
@@ -70,6 +73,7 @@ extension MusicSearchViewModel {
 	
 	struct Output {
 		let dataSourceDriver: Driver<[SectionModel]>
+		let errorAlertDriver: Driver<MusicError>
 	}
 	
 	struct Constants {

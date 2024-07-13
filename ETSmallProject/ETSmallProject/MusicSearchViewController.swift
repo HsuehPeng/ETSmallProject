@@ -57,6 +57,20 @@ final class MusicSearchViewController: UIViewController {
 		)
 		
 		outPut.dataSourceDriver.drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+		outPut.errorAlertDriver.drive(with: self, onNext: { owner, error in
+			owner.presentErrorAlert(error: error)
+		}).disposed(by: disposeBag)
+	}
+	
+	private func presentErrorAlert(error: MusicError) {
+		let alertController = UIAlertController(
+			title: error.errorModel.title,
+			message: error.errorModel.description,
+			preferredStyle: .alert
+		)
+		let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alertController.addAction(okAction)
+		present(alertController, animated: true)
 	}
 }
 
