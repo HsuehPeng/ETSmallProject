@@ -35,11 +35,12 @@ final class MusicSearchViewModel {
 			}
 		}.asDriver(onErrorJustReturn: .unknown)
 		
-		let musicSectionDriver: Driver<[SectionModel]> = fetchMusicSuccessObservabl.map({ musics in
+		let musicSectionDriver: Driver<[SectionModel]> = fetchMusicSuccessObservabl.map({ [weak self] musics in
+			guard let self else { return [] }
 			let musicItems = musics.map { music in
 				let vm = MusicCollectionViewCellViewModel(
 					trackName: music.trackName,
-					trackTime: "\(music.trackTimeMillis)",
+					trackTime: self.formatMilliseconds(music.trackTimeMillis),
 					imageUrlString: music.artworkUrl100,
 					longDescription: music.longDescription
 				)
@@ -62,6 +63,15 @@ final class MusicSearchViewModel {
 			dataSourceDriver: dataSourceDriver,
 			errorAlertDriver: fetchMusicErrorDriver
 		)
+	}
+	
+	private func formatMilliseconds(_ milliseconds: Int) -> String {
+		let totalSeconds = milliseconds / 1000
+		
+		let minutes = totalSeconds / 60
+		let seconds = totalSeconds % 60
+		
+		return String(format: "%02d:%02d", minutes, seconds)
 	}
 }
 
