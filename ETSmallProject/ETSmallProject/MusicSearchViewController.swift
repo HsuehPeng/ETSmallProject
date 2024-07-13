@@ -47,6 +47,11 @@ final class MusicSearchViewController: UIViewController {
 							as? MusicCollectionViewCell else { return UICollectionViewCell() }
 					cell.configure(with: viewModel)
 					return cell
+				case .loading:
+					guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(LoadingCollectionViewCell.self)", for: indexPath)
+							as? LoadingCollectionViewCell else { return UICollectionViewCell() }
+					cell.configure()
+					return cell
 				}
 			}
 		)
@@ -86,6 +91,7 @@ extension MusicSearchViewController {
 		searchButton.backgroundColor = UIColor.black
 		
 		collectionView.register(MusicCollectionViewCell.self, forCellWithReuseIdentifier: "\(MusicCollectionViewCell.self)")
+		collectionView.register(LoadingCollectionViewCell.self, forCellWithReuseIdentifier: "\(LoadingCollectionViewCell.self)")
 	}
 	
 	private func setupConstraints() {

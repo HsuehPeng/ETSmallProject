@@ -24,7 +24,15 @@ final class MusicSearchViewModel {
 			return Observable.just([section]).delay(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
 		}.asDriver(onErrorJustReturn: [])
 		
-		let dataSourceDriver: Driver<[SectionModel]> = Driver.merge(musicSectionDriver)
+		let loadingSectionDriver = searchMusicObservable.flatMapLatest { _ -> Observable<[SectionModel]> in
+			let items = [Item.loading]
+			return .just([SectionModel(items: items)])
+		}.asDriver(onErrorJustReturn: [])
+		
+		let dataSourceDriver: Driver<[SectionModel]> = Driver.merge(
+			musicSectionDriver,
+			loadingSectionDriver
+		)
 		
 		return Output(dataSourceDriver: dataSourceDriver)
 	}
@@ -51,6 +59,7 @@ extension MusicSearchViewModel {
 	
 	enum Item {
 		case music(MusicCollectionViewCellViewModel)
+		case loading
 	}
 	
 	struct SectionModel: SectionModelType {

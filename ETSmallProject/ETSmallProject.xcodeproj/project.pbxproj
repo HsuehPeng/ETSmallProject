@@ -23,6 +23,7 @@
 		B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */; };
 		B8268B1F2C4131BE00B3FB89 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B1E2C4131BE00B3FB89 /* RxDataSources */; };
 		B8268B212C41320400B3FB89 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B202C41320400B3FB89 /* Differentiator */; };
+		B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
+		B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
 				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
 				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
+				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
 				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
 				B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */,
 				B8268AF12C3E5A7B00B3FB89 /* LaunchScreen.storyboard */,
@@ -243,6 +246,7 @@
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
 				B8268B1A2C3E8A5000B3FB89 /* MusicCollectionViewCell.swift in Sources */,
 				B8268AE72C3E5A7A00B3FB89 /* AppDelegate.swift in Sources */,
+				B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */,
 				B8268AE92C3E5A7A00B3FB89 /* SceneDelegate.swift in Sources */,
 				B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */,
 				B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */,
