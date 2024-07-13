@@ -12,7 +12,7 @@ enum MusicError: Error {
 		case .unknown:
 			return ErrorModel(title: "Unknown Error", description: "Unknown Error")
 		case .invalidData:
-			return ErrorModel(title: "Invalid data", description: "Invalid dat")
+			return ErrorModel(title: "Invalid data", description: "Invalid data")
 		}
 	}
 }
