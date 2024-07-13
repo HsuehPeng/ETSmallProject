@@ -8,7 +8,7 @@ final class MusicSearchViewModel {
 
 	func transform(input: Input) -> Output {
 		let searchMusicObservable = Observable.merge([
-			input.searchTermDriver.debounce(.milliseconds(300)).asObservable(),
+			input.searchTermDriver.distinctUntilChanged().debounce(.milliseconds(300)).asObservable(),
 			input.searchButtonTapSignal.withLatestFrom(input.searchTermDriver).asObservable()
 		])
 		
