@@ -17,7 +17,7 @@ final class MusicSearchViewModel {
 			input.searchButtonTapSignal.withLatestFrom(input.searchTermDriver).asObservable()
 		])
 		
-		let fetchMusicResultObservable = searchMusicObservable.flatMapLatest { [weak self] term -> Observable<Result<[Music], Error>> in
+		let fetchMusicResultObservable = searchMusicObservable.flatMapLatest { [weak self] term -> Observable<Result<[Music], MusicError>> in
 			guard let self else { return .empty() }
 			return self.fetchMusicUseCase.execute(searchTerm: term)
 		}.share()
@@ -26,7 +26,7 @@ final class MusicSearchViewModel {
 			return try? result.get()
 		}
 		
-		let fetchMusicErrorObservable: Observable<Error> = fetchMusicResultObservable.compactMap { result in
+		let fetchMusicErrorObservable: Observable<MusicError> = fetchMusicResultObservable.compactMap { result in
 			switch result {
 			case .success:
 				return nil
