@@ -1,3 +1,4 @@
+import Kingfisher
 import UIKit
 
 final class MusicCollectionViewCell: UICollectionViewCell {
@@ -27,6 +28,11 @@ final class MusicCollectionViewCell: UICollectionViewCell {
 		trackNameLabel.text = viewModel.trackName
 		trackTimeLabel.text = viewModel.trackTime
 		descriptionLabel.text = viewModel.longDescription
+		
+		if let imageUrlString = viewModel.imageUrlString, let imageUrl = URL(string: imageUrlString) {
+			musicImageView.kf.indicatorType = .activity
+			musicImageView.kf.setImage(with: imageUrl)
+		}
 	}
 }
 
@@ -75,6 +81,8 @@ extension MusicCollectionViewCell {
 		descriptionLabel.textColor = UIColor.black.withAlphaComponent(0.5)
 		descriptionLabel.numberOfLines = 0
 
+		musicImageView.clipsToBounds = true
+		
 		leadingVStack.axis = .vertical
 		leadingVStack.spacing = 10
 		leadingVStack.alignment = .fill
