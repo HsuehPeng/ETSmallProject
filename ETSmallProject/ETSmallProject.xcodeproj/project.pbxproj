@@ -32,6 +32,7 @@
 		B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B392C4270C200B3FB89 /* HTTPMethod.swift */; };
 		B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3B2C42726B00B3FB89 /* Endpoint.swift */; };
 		B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */; };
+		B8268B402C4274EC00B3FB89 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		B8268B392C4270C200B3FB89 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B8268B3B2C42726B00B3FB89 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
 				B8268B3B2C42726B00B3FB89 /* Endpoint.swift */,
 				B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */,
+				B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */,
+				B8268B402C4274EC00B3FB89 /* NetworkError.swift in Sources */,
 				B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */,
 				B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */,
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
