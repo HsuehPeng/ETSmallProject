@@ -29,6 +29,7 @@
 		B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B292C425E3600B3FB89 /* MusicError.swift */; };
 		B8268B2C2C425EE700B3FB89 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */; };
 		B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */; };
+		B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B392C4270C200B3FB89 /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B8268B292C425E3600B3FB89 /* MusicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicError.swift; sourceTree = "<group>"; };
 		B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchMusicUseCase.swift; sourceTree = "<group>"; };
+		B8268B392C4270C200B3FB89 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		B8268AE52C3E5A7A00B3FB89 /* ETSmallProject */ = {
 			isa = PBXGroup;
 			children = (
+				B8268B382C426FF200B3FB89 /* Network */,
 				B8268B242C42516700B3FB89 /* Domain */,
 				B8268AE62C3E5A7A00B3FB89 /* AppDelegate.swift */,
 				B8268AE82C3E5A7A00B3FB89 /* SceneDelegate.swift */,
@@ -149,6 +152,14 @@
 				B8268B292C425E3600B3FB89 /* MusicError.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		B8268B382C426FF200B3FB89 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */,
 				B8268AE92C3E5A7A00B3FB89 /* SceneDelegate.swift in Sources */,
 				B8268B262C42517100B3FB89 /* Music.swift in Sources */,
+				B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */,
 				B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */,
 				B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */,
 			);
