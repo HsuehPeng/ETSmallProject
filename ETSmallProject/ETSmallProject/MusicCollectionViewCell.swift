@@ -110,13 +110,13 @@ extension MusicCollectionViewCell {
 final class MusicCollectionViewCellViewModel {
 	let trackName: String
 	let trackTime: String
-	let imageUrlString: String
+	let imageUrlString: String?
 	let longDescription: String?
 	
 	init(
 		trackName: String,
 		trackTime: String,
-		imageUrlString: String,
+		imageUrlString: String?,
 		longDescription: String?
 	) {
 		self.trackName = trackName

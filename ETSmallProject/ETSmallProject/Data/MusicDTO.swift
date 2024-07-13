@@ -1,21 +1,27 @@
 import Foundation
 
-struct MusicDTO: Decodable {
-	let id: String
-	let trackName: String
-	let trackTimeMillis: Int
-	let artworkUrl100: String
-	let longDescription: String?
+struct MusicDTORoot: Decodable {
+	struct MusicDTO: Decodable {
+		let trackId: Int?
+		let trackName: String?
+		let trackTimeMillis: Int?
+		let artworkUrl100: String?
+		let longDescription: String?
+	}
+	
+	let results: [MusicDTO]
 }
 
-extension MusicDTO {
-	func mapToDomain() -> Music {
-		return Music(
-			id: self.id,
-			trackName: self.trackName,
-			trackTimeMillis: self.trackTimeMillis,
-			artworkUrl100: self.artworkUrl100,
-			longDescription: self.longDescription
-		)
+extension MusicDTORoot {
+	func mapToDomainMusics() -> [Music] {
+		return results.map {
+			Music(
+				id: "\($0.trackId)",
+				trackName: $0.trackName ?? "Unknown",
+				trackTimeMillis: $0.trackTimeMillis ?? 0,
+				artworkUrl100: $0.artworkUrl100,
+				longDescription: $0.longDescription
+			)
+		}
 	}
 }

@@ -16,7 +16,7 @@ extension Endpoint {
 		var components = URLComponents()
 		components.scheme = baseURL.scheme
 		components.host = baseURL.host
-		components.path = baseURL.path
+		components.path = path
 		components.queryItems = queryItems
 		
 		guard let url = components.url else {

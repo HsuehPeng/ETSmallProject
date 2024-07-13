@@ -15,9 +15,8 @@ final class RemoteFetchMusicUseCase: FetchMusicUseCaseProtocol {
 				switch result {
 				case let .success(data):
 					do {
-						let musicDTOs = try JSONDecoder().decode([MusicDTO].self, from: data)
-						let musics = musicDTOs.map({ $0.mapToDomain() })
-						observer.onNext(.success(musics))
+						let musicDTORoot = try JSONDecoder().decode(MusicDTORoot.self, from: data)
+						observer.onNext(.success(musicDTORoot.mapToDomainMusics()))
 					} catch {
 						observer.onNext(.failure(.invalidData))
 					}
