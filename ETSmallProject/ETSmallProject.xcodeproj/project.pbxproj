@@ -31,6 +31,7 @@
 		B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */; };
 		B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B392C4270C200B3FB89 /* HTTPMethod.swift */; };
 		B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3B2C42726B00B3FB89 /* Endpoint.swift */; };
+		B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchMusicUseCase.swift; sourceTree = "<group>"; };
 		B8268B392C4270C200B3FB89 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B8268B3B2C42726B00B3FB89 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
 				B8268B3B2C42726B00B3FB89 /* Endpoint.swift */,
+				B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */,
 				B8268AE92C3E5A7A00B3FB89 /* SceneDelegate.swift in Sources */,
 				B8268B262C42517100B3FB89 /* Music.swift in Sources */,
+				B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */,
 				B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */,
 				B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */,
 				B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */,
