@@ -35,6 +35,7 @@
 		B8268B402C4274EC00B3FB89 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */; };
 		B8268B422C42762800B3FB89 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */; };
 		B8268B452C427B1B00B3FB89 /* MusicSearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */; };
+		B8268B472C427F3900B3FB89 /* MusicDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B462C427F3900B3FB89 /* MusicDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchEndpoint.swift; sourceTree = "<group>"; };
+		B8268B462C427F3900B3FB89 /* MusicDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */,
 				B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */,
+				B8268B462C427F3900B3FB89 /* MusicDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				B8268B422C42762800B3FB89 /* URLSessionHTTPClient.swift in Sources */,
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
 				B8268B282C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift in Sources */,
+				B8268B472C427F3900B3FB89 /* MusicDTO.swift in Sources */,
 				B8268B1A2C3E8A5000B3FB89 /* MusicCollectionViewCell.swift in Sources */,
 				B8268B452C427B1B00B3FB89 /* MusicSearchEndpoint.swift in Sources */,
 				B8268B2C2C425EE700B3FB89 /* ErrorModel.swift in Sources */,
