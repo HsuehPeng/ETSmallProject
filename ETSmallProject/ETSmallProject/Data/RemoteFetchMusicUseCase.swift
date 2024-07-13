@@ -1,15 +1,33 @@
+import Foundation
 import RxSwift
 
 final class RemoteFetchMusicUseCase: FetchMusicUseCaseProtocol {
+	private let httpClient: HTTPClient
+	
+	init(httpClient: HTTPClient) {
+		self.httpClient = httpClient
+	}
+	
 	func execute(searchTerm: String) -> Observable<FetchResult> {
-		let musics: [Music] = [
-			.init(id: "1", trackName: "Track name1", trackTimeMillis: 7154613, artworkUrl100: "", longDescription: "longDescription"),
-			.init(id: "1", trackName: "Track name1", trackTimeMillis: 7154613, artworkUrl100: "", longDescription: "longDescription"),
-			.init(id: "1", trackName: "Track name1", trackTimeMillis: 7154613, artworkUrl100: "", longDescription: "longDescription"),
-			.init(id: "1", trackName: "Track name1", trackTimeMillis: 7154613, artworkUrl100: "", longDescription: "longDescription")
-		]
-		
-//		return Observable.just(.success(musics)).delay(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-		return Observable.just(.failure(.search)).delay(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+		let endPoint = MusicSearchEndpoint(searchTerm: searchTerm)
+		return Observable.create { [weak self] observer in
+			self?.httpClient.request(endpoint: endPoint) { result in
+				switch result {
+				case let .success(data):
+					do {
+						let musicDTOs = try JSONDecoder().decode([MusicDTO].self, from: data)
+						let musics = musicDTOs.map({ $0.mapToDomain() })
+						observer.onNext(.success(musics))
+					} catch {
+						observer.onNext(.failure(.invalidData))
+					}
+				case let .failure(error):
+					observer.onNext(.failure(.search))
+				}
+				observer.onCompleted()
+			}
+			
+			return Disposables.create()
+		}
 	}
 }
