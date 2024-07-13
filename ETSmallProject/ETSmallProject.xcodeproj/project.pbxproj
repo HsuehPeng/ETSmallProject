@@ -123,20 +123,15 @@
 		B8268AE52C3E5A7A00B3FB89 /* ETSmallProject */ = {
 			isa = PBXGroup;
 			children = (
+				B8268B492C42B66900B3FB89 /* Application */,
 				B8268B382C426FF200B3FB89 /* Network */,
 				B8268B432C427B0800B3FB89 /* Data */,
 				B8268B242C42516700B3FB89 /* Domain */,
-				B8268AE62C3E5A7A00B3FB89 /* AppDelegate.swift */,
-				B8268AE82C3E5A7A00B3FB89 /* SceneDelegate.swift */,
-				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
-				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
-				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
-				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
-				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
-				B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */,
+				B8268B482C42B62B00B3FB89 /* Presentation */,
+				B8268B4A2C42B68500B3FB89 /* Common */,
 				B8268AF12C3E5A7B00B3FB89 /* LaunchScreen.storyboard */,
+				B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */,
 				B8268AF42C3E5A7B00B3FB89 /* Info.plist */,
-				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
 			);
 			path = ETSmallProject;
 			sourceTree = "<group>";
@@ -186,6 +181,35 @@
 				B8268B462C427F3900B3FB89 /* MusicDTO.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		B8268B482C42B62B00B3FB89 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
+				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
+				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
+				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
+				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B8268B492C42B66900B3FB89 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B8268AE82C3E5A7A00B3FB89 /* SceneDelegate.swift */,
+				B8268AE62C3E5A7A00B3FB89 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B8268B4A2C42B68500B3FB89 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
