@@ -4,7 +4,12 @@ import RxCocoa
 import RxSwift
 
 final class MusicSearchViewModel {
+	private let fetchMusicUseCase: FetchMusicUseCaseProtocol
 	private let disposebag = DisposeBag()
+	
+	init(fetchMusicUseCase: FetchMusicUseCaseProtocol) {
+		self.fetchMusicUseCase = fetchMusicUseCase
+	}
 
 	func transform(input: Input) -> Output {
 		let searchMusicObservable = Observable.merge([
@@ -12,21 +17,40 @@ final class MusicSearchViewModel {
 			input.searchButtonTapSignal.withLatestFrom(input.searchTermDriver).asObservable()
 		])
 		
-		let musicSectionDriver = searchMusicObservable.flatMapLatest { term -> Observable<[SectionModel]> in
-			let musicCellViewModel: [MusicCollectionViewCellViewModel] = [
-				.init(trackName: "Track name1", trackTime: "4:15", imageUrlString: "", longDescription: "longDescription"),
-				.init(trackName: "Track name2", trackTime: "4:15", imageUrlString: "", longDescription: "longDescription"),
-				.init(trackName: "Track name3", trackTime: "4:15", imageUrlString: "", longDescription: "longDescription")
-			]
-			
-			let items = musicCellViewModel.map { Item.music($0) }
-			let section = SectionModel(items: items)
-			return Observable.just([section]).delay(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-		}.asDriver(onErrorJustReturn: [])
+		let fetchMusicResultObservable = searchMusicObservable.flatMapLatest { [weak self] term -> Observable<Result<[Music], Error>> in
+			guard let self else { return .empty() }
+			return self.fetchMusicUseCase.execute(searchTerm: term)
+		}.share()
 		
-		let loadingSectionDriver = searchMusicObservable.flatMapLatest { _ -> Observable<[SectionModel]> in
-			let items = [Item.loading]
-			return .just([SectionModel(items: items)])
+		let fetchMusicSuccessObservabl: Observable<[Music]> = fetchMusicResultObservable.compactMap { result in
+			return try? result.get()
+		}
+		
+		let fetchMusicErrorObservable: Observable<Error> = fetchMusicResultObservable.compactMap { result in
+			switch result {
+			case .success:
+				return nil
+			case let .failure(error):
+				return error
+			}
+		}
+		
+		let musicSectionDriver: Driver<[SectionModel]> = fetchMusicSuccessObservabl.map({ musics in
+			let musicItems = musics.map { music in
+				let vm = MusicCollectionViewCellViewModel(
+					trackName: music.trackName,
+					trackTime: "\(music.trackTimeMillis)",
+					imageUrlString: music.artworkUrl100,
+					longDescription: music.longDescription
+				)
+				return Item.music(vm)
+			}
+			
+			return [SectionModel(items: musicItems)]
+		}).asDriver(onErrorJustReturn: [])
+		
+		let loadingSectionDriver: Driver<[SectionModel]> = searchMusicObservable.map { _ in
+			return [SectionModel(items: [.loading])]
 		}.asDriver(onErrorJustReturn: [])
 		
 		let dataSourceDriver: Driver<[SectionModel]> = Driver.merge(
