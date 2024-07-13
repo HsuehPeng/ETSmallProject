@@ -25,6 +25,7 @@
 		B8268B212C41320400B3FB89 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B202C41320400B3FB89 /* Differentiator */; };
 		B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */; };
 		B8268B262C42517100B3FB89 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B252C42517100B3FB89 /* Music.swift */; };
+		B8268B282C42537500B3FB89 /* FetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
 		B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8268B252C42517100B3FB89 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				B8268B252C42517100B3FB89 /* Music.swift */,
+				B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
+				B8268B282C42537500B3FB89 /* FetchMusicUseCase.swift in Sources */,
 				B8268B1A2C3E8A5000B3FB89 /* MusicCollectionViewCell.swift in Sources */,
 				B8268AE72C3E5A7A00B3FB89 /* AppDelegate.swift in Sources */,
 				B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */,
