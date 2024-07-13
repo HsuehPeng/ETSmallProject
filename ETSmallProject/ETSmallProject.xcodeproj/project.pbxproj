@@ -30,6 +30,7 @@
 		B8268B2C2C425EE700B3FB89 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */; };
 		B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */; };
 		B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B392C4270C200B3FB89 /* HTTPMethod.swift */; };
+		B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3B2C42726B00B3FB89 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchMusicUseCase.swift; sourceTree = "<group>"; };
 		B8268B392C4270C200B3FB89 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		B8268B3B2C42726B00B3FB89 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
+				B8268B3B2C42726B00B3FB89 /* Endpoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */,
 				B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */,
 				B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */,
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
