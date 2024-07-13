@@ -4,6 +4,7 @@ protocol Endpoint {
 	var baseURL: URL { get }
 	var path: String { get }
 	var method: HTTPMethod { get }
+	var queryItems: [URLQueryItem]? { get }
 	var headers: [String: String]? { get }
 	var body: Data? { get }
 	
@@ -12,10 +13,11 @@ protocol Endpoint {
 
 extension Endpoint {
 	func makeRequest() -> URLRequest? {
-		guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else {
-			return nil
-		}
-		components.path = path
+		var components = URLComponents()
+		components.scheme = baseURL.scheme
+		components.host = baseURL.host
+		components.path = baseURL.path
+		components.queryItems = queryItems
 		
 		guard let url = components.url else {
 			return nil
