@@ -21,7 +21,7 @@ final class RemoteFetchMusicUseCase: FetchMusicUseCaseProtocol {
 						observer.onNext(.failure(.invalidData))
 					}
 				case let .failure(error):
-					observer.onNext(.failure(.search))
+					observer.onNext(.failure(.network(error)))
 				}
 				observer.onCompleted()
 			}

@@ -1,18 +1,18 @@
 import Foundation
 
 enum MusicError: Error {
-	case search
+	case network(NetworkError)
 	case unknown
 	case invalidData
 	
 	var errorModel: ErrorModel {
 		switch self {
-		case .search:
-			return ErrorModel(title: "Search fail", description: "Fail to get the music result")
+		case let .network(networkError):
+			return ErrorModel(title: "Search fail", description: networkError.localizedDescription)
 		case .unknown:
 			return ErrorModel(title: "Unknown Error", description: "Unknown Error")
 		case .invalidData:
-			return ErrorModel(title: "Invalid data", description: "Invalid data")
+			return ErrorModel(title: "Invalid data", description: "Failed to decode data")
 		}
 	}
 }
