@@ -148,8 +148,3 @@ extension MusicSearchViewModel {
 		}
 	}
 }
-
-enum PlayState {
-	case playing
-	case pause
-}
