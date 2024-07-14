@@ -28,7 +28,7 @@
 		B8268B282C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B272C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift */; };
 		B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B292C425E3600B3FB89 /* MusicError.swift */; };
 		B8268B2C2C425EE700B3FB89 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */; };
-		B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */; };
+		B8268B362C426EB400B3FB89 /* RemoteMusicLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B352C426EB400B3FB89 /* RemoteMusicLoader.swift */; };
 		B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B392C4270C200B3FB89 /* HTTPMethod.swift */; };
 		B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3B2C42726B00B3FB89 /* Endpoint.swift */; };
 		B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */; };
@@ -69,7 +69,7 @@
 		B8268B272C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCaseProtocol.swift; sourceTree = "<group>"; };
 		B8268B292C425E3600B3FB89 /* MusicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicError.swift; sourceTree = "<group>"; };
 		B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
-		B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchMusicUseCase.swift; sourceTree = "<group>"; };
+		B8268B352C426EB400B3FB89 /* RemoteMusicLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMusicLoader.swift; sourceTree = "<group>"; };
 		B8268B392C4270C200B3FB89 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B8268B3B2C42726B00B3FB89 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */,
-				B8268B352C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift */,
+				B8268B352C426EB400B3FB89 /* RemoteMusicLoader.swift */,
 				B8268B462C427F3900B3FB89 /* MusicDTO.swift */,
 			);
 			path = Data;
@@ -339,7 +339,7 @@
 			files = (
 				B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */,
 				B8268B402C4274EC00B3FB89 /* NetworkError.swift in Sources */,
-				B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */,
+				B8268B362C426EB400B3FB89 /* RemoteMusicLoader.swift in Sources */,
 				B8268B4F2C44201100B3FB89 /* MusicManagerUseCase.swift in Sources */,
 				B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */,
 				B8268B512C442B6C00B3FB89 /* PlayState.swift in Sources */,

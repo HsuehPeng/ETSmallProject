@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-final class RemoteFetchMusicUseCase: FetchMusicUseCaseProtocol {
+final class RemoteMusicLoader: FetchMusicUseCaseProtocol {
 	private let httpClient: HTTPClient
 	
 	init(httpClient: HTTPClient) {
