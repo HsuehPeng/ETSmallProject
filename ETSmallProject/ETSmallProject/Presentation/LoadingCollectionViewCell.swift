@@ -34,11 +34,13 @@ extension LoadingCollectionViewCell {
 	}
 	
 	private func setupConstraints() {
+		let loadingViewHeightConstraint = loadingView.heightAnchor.constraint(equalToConstant: Constants.loadingViewHeight)
+		loadingViewHeightConstraint.priority = .defaultLow
 		NSLayoutConstraint.activate([
 			loadingView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 			loadingView.topAnchor.constraint(equalTo: contentView.topAnchor),
 			loadingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-			loadingView.heightAnchor.constraint(equalToConstant: Constants.loadingViewHeight)
+			loadingViewHeightConstraint
 		])
 	}
 	

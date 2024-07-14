@@ -5,6 +5,7 @@ import RxSwift
 
 final class MusicSearchViewModel {
 	private let fetchMusicUseCase: FetchMusicUseCaseProtocol
+	private let musicManagerUseCase: MusicManagerUseCaseProtocol
 	private let disposebag = DisposeBag()
 	
 	private let musicCellVMsRelay = BehaviorRelay<[MusicCollectionViewCellViewModel]>(value: [])
@@ -12,27 +13,40 @@ final class MusicSearchViewModel {
 	private let isLoadingRelay = BehaviorRelay<Bool>(value: false)
 	private let playingIndexRelay = BehaviorRelay<Int?>(value: nil)
 	
-	init(fetchMusicUseCase: FetchMusicUseCaseProtocol) {
+	init(
+		fetchMusicUseCase: FetchMusicUseCaseProtocol,
+		musicManagerUseCase: MusicManagerUseCaseProtocol
+	) {
 		self.fetchMusicUseCase = fetchMusicUseCase
+		self.musicManagerUseCase = musicManagerUseCase
 	}
 
 	func transform(input: Input) -> Output {
 		input.didTapCellItemSignal.emit(with: self, onNext: { owner, indexPath in
-			guard let currentIndex = owner.playingIndexRelay.value else {
-				owner.musicCellVMsRelay.value[indexPath.item].togglePlayState()
-				owner.playingIndexRelay.accept(indexPath.item)
+			let selectedIndex = indexPath.item
+			let selectedMusicItemVM = owner.musicCellVMsRelay.value[selectedIndex]
+			
+			guard let previousSelectedIndex = owner.playingIndexRelay.value else {
+				selectedMusicItemVM.togglePlayState()
+				owner.playingIndexRelay.accept(selectedIndex)
+				owner.musicManagerUseCase.start(from: URL(string: selectedMusicItemVM.music.previewUrl)!)
 				return
 			}
 			
-			if indexPath.item == currentIndex {
-				owner.musicCellVMsRelay.value[currentIndex].togglePlayState()
-				owner.playingIndexRelay.accept(currentIndex)
+			if selectedIndex == previousSelectedIndex {
+				selectedMusicItemVM.togglePlayState()
+				owner.playingIndexRelay.accept(previousSelectedIndex)
+				if selectedMusicItemVM.playState == .playing {
+					owner.musicManagerUseCase.resume()
+				} else if selectedMusicItemVM.playState == .pause {
+					owner.musicManagerUseCase.pause()
+				}
 			} else {
-				owner.musicCellVMsRelay.value[currentIndex].removePlayState()
-				owner.musicCellVMsRelay.value[indexPath.item].togglePlayState()
-				owner.playingIndexRelay.accept(indexPath.item)
+				owner.musicCellVMsRelay.value[previousSelectedIndex].removePlayState()
+				selectedMusicItemVM.togglePlayState()
+				owner.playingIndexRelay.accept(selectedIndex)
+				owner.musicManagerUseCase.start(from: URL(string: selectedMusicItemVM.music.previewUrl)!)
 			}
-
 		}).disposed(by: disposebag)
 		
 		let searchMusicObservable = Observable.merge([
@@ -54,6 +68,7 @@ final class MusicSearchViewModel {
 			case let .success(musics):
 				let musicCellVMs = musics.map { music in
 					MusicCollectionViewCellViewModel(
+						music: music,
 						trackName: music.trackName,
 						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
 						imageUrlString: music.artworkUrl100,
@@ -70,9 +85,7 @@ final class MusicSearchViewModel {
 		let musicSectionDriver: Driver<[SectionModel]> = Driver.combineLatest(
 			musicCellVMsRelay.asDriver(),
 			playingIndexRelay.asDriver()
-		).map { [weak self] musicCellVMs, selectedMusicState in
-			guard let self else { return [] }
-			
+		).map { musicCellVMs, _ in
 			let musicItems = musicCellVMs.map({ Item.music($0) })
 			return [SectionModel(items: musicItems)]
 		}
@@ -132,9 +145,4 @@ extension MusicSearchViewModel {
 			self.items = items
 		}
 	}
-}
-
-enum PlayState {
-	case playing
-	case pause
 }

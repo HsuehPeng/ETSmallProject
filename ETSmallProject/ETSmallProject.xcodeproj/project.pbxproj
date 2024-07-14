@@ -37,6 +37,8 @@
 		B8268B452C427B1B00B3FB89 /* MusicSearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */; };
 		B8268B472C427F3900B3FB89 /* MusicDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B462C427F3900B3FB89 /* MusicDTO.swift */; };
 		B8268B4D2C42BB7000B3FB89 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B4C2C42BB7000B3FB89 /* Kingfisher */; };
+		B8268B4F2C44201100B3FB89 /* MusicManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */; };
+		B8268B512C442B6C00B3FB89 /* PlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B502C442B6C00B3FB89 /* PlayState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		B8268B442C427B1B00B3FB89 /* MusicSearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchEndpoint.swift; sourceTree = "<group>"; };
 		B8268B462C427F3900B3FB89 /* MusicDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDTO.swift; sourceTree = "<group>"; };
+		B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManagerUseCase.swift; sourceTree = "<group>"; };
+		B8268B502C442B6C00B3FB89 /* PlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 				B8268B252C42517100B3FB89 /* Music.swift */,
 				B8268B272C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift */,
 				B8268B292C425E3600B3FB89 /* MusicError.swift */,
+				B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
 				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
 				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
+				B8268B502C442B6C00B3FB89 /* PlayState.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -334,7 +340,9 @@
 				B8268B3C2C42726B00B3FB89 /* Endpoint.swift in Sources */,
 				B8268B402C4274EC00B3FB89 /* NetworkError.swift in Sources */,
 				B8268B362C426EB400B3FB89 /* RemoteFetchMusicUseCase.swift in Sources */,
+				B8268B4F2C44201100B3FB89 /* MusicManagerUseCase.swift in Sources */,
 				B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */,
+				B8268B512C442B6C00B3FB89 /* PlayState.swift in Sources */,
 				B8268B422C42762800B3FB89 /* URLSessionHTTPClient.swift in Sources */,
 				B8268AEB2C3E5A7A00B3FB89 /* MusicSearchViewController.swift in Sources */,
 				B8268B282C42537500B3FB89 /* FetchMusicUseCaseProtocol.swift in Sources */,

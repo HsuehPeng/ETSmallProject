@@ -20,7 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		window = UIWindow(windowScene: windowScene)
 		let urlSessionHTTPClient = URLSessionHTTPClient()
 		let fetchMusicUseCase = RemoteFetchMusicUseCase(httpClient: urlSessionHTTPClient)
-		let viewModel = MusicSearchViewModel(fetchMusicUseCase: fetchMusicUseCase)
+		let musicManager = MusicManager()
+		let viewModel = MusicSearchViewModel(
+			fetchMusicUseCase: fetchMusicUseCase,
+			musicManagerUseCase: musicManager
+		)
 		let viewController = MusicSearchViewController(viewModel: viewModel)
 		window?.rootViewController = viewController
 		window?.makeKeyAndVisible()
