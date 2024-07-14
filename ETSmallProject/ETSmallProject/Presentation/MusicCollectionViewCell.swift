@@ -97,7 +97,7 @@ extension MusicCollectionViewCell {
 		
 		leadingVStack.axis = .vertical
 		leadingVStack.spacing = 10
-		leadingVStack.alignment = .fill
+		leadingVStack.alignment = .center
 		
 		trackHStack.axis = .horizontal
 		trackHStack.spacing = 10
@@ -121,8 +121,14 @@ extension MusicCollectionViewCell {
 		])
 		
 		NSLayoutConstraint.activate([
+			leadingVStack.widthAnchor.constraint(equalToConstant: 100)
+		])
+		
+		let musicImageViewHeightConstraint = musicImageView.heightAnchor.constraint(equalToConstant: 100)
+		musicImageViewHeightConstraint.priority = .defaultLow
+		NSLayoutConstraint.activate([
 			musicImageView.widthAnchor.constraint(equalToConstant: 100),
-			musicImageView.heightAnchor.constraint(equalToConstant: 100)
+			musicImageViewHeightConstraint
 		])
 	}
 }
