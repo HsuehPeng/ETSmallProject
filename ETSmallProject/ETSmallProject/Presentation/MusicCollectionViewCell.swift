@@ -132,7 +132,18 @@ final class MusicCollectionViewCellViewModel {
 	let trackTime: String
 	let imageUrlString: String?
 	let longDescription: String?
-	let playState: PlayState
+	var playState: PlayState
+	
+	func togglePlayState() {
+		switch playState {
+		case .none:
+			playState = .playing
+		case .pause:
+			playState = .playing
+		case .playing:
+			playState = .pause
+		}
+	}
 	
 	init(
 		trackName: String,
