@@ -128,6 +128,7 @@ extension MusicCollectionViewCell {
 }
 
 final class MusicCollectionViewCellViewModel {
+	let music: Music
 	let trackName: String
 	let trackTime: String
 	let imageUrlString: String?
@@ -150,12 +151,14 @@ final class MusicCollectionViewCellViewModel {
 	}
 	
 	init(
+		music: Music,
 		trackName: String,
 		trackTime: String,
 		imageUrlString: String?,
 		longDescription: String?,
 		playState: PlayState? = nil
 	) {
+		self.music = music
 		self.trackName = trackName
 		self.trackTime = trackTime
 		self.imageUrlString = imageUrlString

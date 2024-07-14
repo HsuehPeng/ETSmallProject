@@ -32,7 +32,6 @@ final class MusicSearchViewModel {
 				owner.musicCellVMsRelay.value[indexPath.item].togglePlayState()
 				owner.playingIndexRelay.accept(indexPath.item)
 			}
-
 		}).disposed(by: disposebag)
 		
 		let searchMusicObservable = Observable.merge([
@@ -54,6 +53,7 @@ final class MusicSearchViewModel {
 			case let .success(musics):
 				let musicCellVMs = musics.map { music in
 					MusicCollectionViewCellViewModel(
+						music: music,
 						trackName: music.trackName,
 						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
 						imageUrlString: music.artworkUrl100,

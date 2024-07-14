@@ -5,4 +5,5 @@ struct Music: Equatable {
 	let trackTimeMillis: Int
 	let artworkUrl100: String?
 	let longDescription: String?
+	let previewUrl: String
 }
