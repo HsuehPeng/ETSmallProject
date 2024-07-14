@@ -1,3 +1,4 @@
+import Kingfisher
 import UIKit
 
 final class MusicCollectionViewCell: UICollectionViewCell {
@@ -27,6 +28,23 @@ final class MusicCollectionViewCell: UICollectionViewCell {
 		trackNameLabel.text = viewModel.trackName
 		trackTimeLabel.text = viewModel.trackTime
 		descriptionLabel.text = viewModel.longDescription
+		
+		if let imageUrlString = viewModel.imageUrlString, let imageUrl = URL(string: imageUrlString) {
+			musicImageView.kf.indicatorType = .activity
+			musicImageView.kf.setImage(with: imageUrl)
+		}
+		
+		switch viewModel.playState {
+		case .none:
+			playTitleLabel.text = ""
+			playTitleLabel.isHidden = true
+		case .playing:
+			playTitleLabel.text = "正在播放 ⏸️"
+			playTitleLabel.isHidden = false
+		case .pause:
+			playTitleLabel.text = "正在播放 ▶️"
+			playTitleLabel.isHidden = false
+		}
 	}
 }
 
@@ -75,6 +93,8 @@ extension MusicCollectionViewCell {
 		descriptionLabel.textColor = UIColor.black.withAlphaComponent(0.5)
 		descriptionLabel.numberOfLines = 0
 
+		musicImageView.clipsToBounds = true
+		
 		leadingVStack.axis = .vertical
 		leadingVStack.spacing = 10
 		leadingVStack.alignment = .fill
@@ -112,16 +132,34 @@ final class MusicCollectionViewCellViewModel {
 	let trackTime: String
 	let imageUrlString: String?
 	let longDescription: String?
+	private (set) var playState: PlayState?
+	
+	func togglePlayState() {
+		switch playState {
+		case .pause:
+			playState = .playing
+		case .playing:
+			playState = .pause
+		case .none:
+			playState = .playing
+		}
+	}
+	
+	func removePlayState() {
+		playState = nil
+	}
 	
 	init(
 		trackName: String,
 		trackTime: String,
 		imageUrlString: String?,
-		longDescription: String?
+		longDescription: String?,
+		playState: PlayState? = nil
 	) {
 		self.trackName = trackName
 		self.trackTime = trackTime
 		self.imageUrlString = imageUrlString
 		self.longDescription = longDescription
+		self.playState = playState
 	}
 }
