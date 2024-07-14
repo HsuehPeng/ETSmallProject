@@ -85,9 +85,7 @@ final class MusicSearchViewModel {
 		let musicSectionDriver: Driver<[SectionModel]> = Driver.combineLatest(
 			musicCellVMsRelay.asDriver(),
 			playingIndexRelay.asDriver()
-		).map { [weak self] musicCellVMs, selectedMusicState in
-			guard let self else { return [] }
-			
+		).map { musicCellVMs, _ in
 			let musicItems = musicCellVMs.map({ Item.music($0) })
 			return [SectionModel(items: musicItems)]
 		}
