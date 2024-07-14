@@ -32,14 +32,6 @@ final class MusicSearchViewModel {
 
 			switch result {
 			case let .success(musics):
-				let musicCellVMs = musics.map { music in
-					MusicCollectionViewCellViewModel(
-						trackName: music.trackName,
-						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
-						imageUrlString: music.artworkUrl100,
-						longDescription: music.longDescription
-					)
-				}
 				owner.musicsRelay.accept(musics)
 			case let .failure(error):
 				owner.errorRelay.accept(error)
