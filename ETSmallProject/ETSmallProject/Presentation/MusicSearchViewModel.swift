@@ -19,7 +19,7 @@ final class MusicSearchViewModel {
 	func transform(input: Input) -> Output {
 		input.didTapCellItemSignal.emit(with: self, onNext: { owner, indexPath in
 			guard let currentIndex = owner.playingIndexRelay.value else {
-				owner.musicCellVMsRelay.value[indexPath.item].playState = .playing
+				owner.musicCellVMsRelay.value[indexPath.item].togglePlayState()
 				owner.playingIndexRelay.accept(indexPath.item)
 				return
 			}
@@ -28,8 +28,8 @@ final class MusicSearchViewModel {
 				owner.musicCellVMsRelay.value[currentIndex].togglePlayState()
 				owner.playingIndexRelay.accept(currentIndex)
 			} else {
-				owner.musicCellVMsRelay.value[currentIndex].playState = .none
-				owner.musicCellVMsRelay.value[indexPath.item].playState = .playing
+				owner.musicCellVMsRelay.value[currentIndex].removePlayState()
+				owner.musicCellVMsRelay.value[indexPath.item].togglePlayState()
 				owner.playingIndexRelay.accept(indexPath.item)
 			}
 
@@ -57,8 +57,7 @@ final class MusicSearchViewModel {
 						trackName: music.trackName,
 						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
 						imageUrlString: music.artworkUrl100,
-						longDescription: music.longDescription,
-						playState: .none
+						longDescription: music.longDescription
 					)
 				}
 				owner.musicCellVMsRelay.accept(musicCellVMs)
@@ -136,7 +135,6 @@ extension MusicSearchViewModel {
 }
 
 enum PlayState {
-	case none
 	case playing
 	case pause
 }
