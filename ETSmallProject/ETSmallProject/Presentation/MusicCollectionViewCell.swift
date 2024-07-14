@@ -33,6 +33,18 @@ final class MusicCollectionViewCell: UICollectionViewCell {
 			musicImageView.kf.indicatorType = .activity
 			musicImageView.kf.setImage(with: imageUrl)
 		}
+		
+		switch viewModel.playState {
+		case .none:
+			playTitleLabel.text = ""
+			playTitleLabel.isHidden = true
+		case .playing:
+			playTitleLabel.text = "正在播放 ⏸️"
+			playTitleLabel.isHidden = false
+		case .pause:
+			playTitleLabel.text = "正在播放 ▶️"
+			playTitleLabel.isHidden = false
+		}
 	}
 }
 
@@ -120,16 +132,19 @@ final class MusicCollectionViewCellViewModel {
 	let trackTime: String
 	let imageUrlString: String?
 	let longDescription: String?
+	let playState: PlayState
 	
 	init(
 		trackName: String,
 		trackTime: String,
 		imageUrlString: String?,
-		longDescription: String?
+		longDescription: String?,
+		playState: PlayState
 	) {
 		self.trackName = trackName
 		self.trackTime = trackTime
 		self.imageUrlString = imageUrlString
 		self.longDescription = longDescription
+		self.playState = playState
 	}
 }

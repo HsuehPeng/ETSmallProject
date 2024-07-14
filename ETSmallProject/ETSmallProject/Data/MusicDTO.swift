@@ -16,7 +16,6 @@ extension MusicDTORoot {
 	func mapToDomainMusics() -> [Music] {
 		return results.map {
 			Music(
-				id: "\($0.trackId)",
 				trackName: $0.trackName ?? "Unknown",
 				trackTimeMillis: $0.trackTimeMillis ?? 0,
 				artworkUrl100: $0.artworkUrl100,
