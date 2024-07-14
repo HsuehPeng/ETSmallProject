@@ -6,7 +6,7 @@ import RxSwift
 final class MusicSearchViewModel {
 	private let fetchMusicUseCase: FetchMusicUseCaseProtocol
 	private let disposebag = DisposeBag()
-	private let musicItemVMsBehaviorRelay = BehaviorRelay<[MusicCollectionViewCellViewModel]>(value: [])
+	private let musicsRelay = BehaviorRelay<[Music]>(value: [])
 	private let errorRelay = PublishRelay<MusicError>()
 	private let isLoadingRelay = BehaviorRelay<Bool>(value: false)
 	
@@ -40,14 +40,23 @@ final class MusicSearchViewModel {
 						longDescription: music.longDescription
 					)
 				}
-				owner.musicItemVMsBehaviorRelay.accept(musicCellVMs)
+				owner.musicsRelay.accept(musics)
 			case let .failure(error):
 				owner.errorRelay.accept(error)
 			}
 		})
 		.disposed(by: disposebag)
 		
-		let musicSectionDriver: Driver<[SectionModel]> = musicItemVMsBehaviorRelay.map { musicCellVMs in
+		let musicSectionDriver: Driver<[SectionModel]> = musicsRelay.map { [weak self] musics in
+			guard let self else { return [] }
+			let musicCellVMs = musics.map { music in
+				MusicCollectionViewCellViewModel(
+					trackName: music.trackName,
+					trackTime: self.formatMilliseconds(music.trackTimeMillis),
+					imageUrlString: music.artworkUrl100,
+					longDescription: music.longDescription
+				)
+			}
 			let musicItems = musicCellVMs.map({ Item.music($0) })
 			return [SectionModel(items: musicItems)]
 		}.asDriver(onErrorJustReturn: [])
