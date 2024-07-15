@@ -86,8 +86,7 @@ final class MusicSearchViewModel {
 			musicCellVMsRelay.asDriver(),
 			playingIndexRelay.asDriver()
 		).map { musicCellVMs, _ in
-			let musicItems = musicCellVMs.map({ Item.music($0) })
-			return [SectionModel(items: musicItems)]
+			return [SectionModel(items: musicCellVMs)]
 		}
 		
 		return Output(
@@ -126,19 +125,15 @@ extension MusicSearchViewModel {
 		static let searchButtonTitle = "Search"
 	}
 	
-	enum Item {
-		case music(MusicCollectionViewCellViewModel)
-	}
-	
 	struct SectionModel: SectionModelType {
-		var items: [Item]
+		var items: [MusicCollectionViewCellViewModel]
 
-		init(original: SectionModel, items: [Item]) {
+		init(original: SectionModel, items: [MusicCollectionViewCellViewModel]) {
 			self = original
 			self.items = items
 		}
 		
-		init(items: [Item]) {
+		init(items: [MusicCollectionViewCellViewModel]) {
 			self.items = items
 		}
 	}

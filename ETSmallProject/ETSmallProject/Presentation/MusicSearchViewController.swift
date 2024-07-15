@@ -43,13 +43,10 @@ final class MusicSearchViewController: UIViewController {
 		
 		let dataSource = RxCollectionViewSectionedReloadDataSource<MusicSearchViewModel.SectionModel>(
 			configureCell: { dataSource, collectionView, indexPath, item in
-				switch item {
-				case let .music(viewModel):
-					guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MusicCollectionViewCell.self)", for: indexPath)
-							as? MusicCollectionViewCell else { return UICollectionViewCell() }
-					cell.configure(with: viewModel)
-					return cell
-				}
+				guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MusicCollectionViewCell.self)", for: indexPath)
+						as? MusicCollectionViewCell else { return UICollectionViewCell() }
+				cell.configure(with: item)
+				return cell
 			}
 		)
 		
