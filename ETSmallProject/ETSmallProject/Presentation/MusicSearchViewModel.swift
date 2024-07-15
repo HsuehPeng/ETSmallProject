@@ -68,15 +68,7 @@ final class MusicSearchViewModel {
 
 			switch result {
 			case let .success(musics):
-				let musicCellVMs = musics.map { music in
-					MusicCollectionViewCellViewModel(
-						music: music,
-						trackName: music.trackName,
-						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
-						imageUrlString: music.artworkUrl100,
-						longDescription: music.longDescription
-					)
-				}
+				let musicCellVMs = musics.map { $0.mapToMusicCellViewModel() }
 				owner.musicCellVMsRelay.accept(musicCellVMs)
 			case let .failure(error):
 				owner.errorRelay.accept(error)
@@ -124,15 +116,6 @@ final class MusicSearchViewModel {
 			isLoadingDriver: isLoadingRelay.asDriver()
 		)
 	}
-	
-	private func formatMilliseconds(_ milliseconds: Int) -> String {
-		let totalSeconds = milliseconds / 1000
-		
-		let minutes = totalSeconds / 60
-		let seconds = totalSeconds % 60
-		
-		return String(format: "%02d:%02d", minutes, seconds)
-	}
 }
 
 extension MusicSearchViewModel {
@@ -173,5 +156,3 @@ extension MusicSearchViewModel {
 		let state: PlayState
 	}
 }
-
-

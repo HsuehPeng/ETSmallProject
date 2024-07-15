@@ -40,6 +40,7 @@
 		B8268B512C442B6C00B3FB89 /* PlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B502C442B6C00B3FB89 /* PlayState.swift */; };
 		B8268B532C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */; };
 		B8268B552C44EB4500B3FB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B542C44EB4500B3FB89 /* LoadingView.swift */; };
+		B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B572C4562AA00B3FB89 /* Music+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B8268B502C442B6C00B3FB89 /* PlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayState.swift; sourceTree = "<group>"; };
 		B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicRepositoryProtocol.swift; sourceTree = "<group>"; };
 		B8268B542C44EB4500B3FB89 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B8268B572C4562AA00B3FB89 /* Music+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
 				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
 				B8268B502C442B6C00B3FB89 /* PlayState.swift */,
+				B8268B572C4562AA00B3FB89 /* Music+Extension.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				B8268AE72C3E5A7A00B3FB89 /* AppDelegate.swift in Sources */,
 				B8268AE92C3E5A7A00B3FB89 /* SceneDelegate.swift in Sources */,
 				B8268B262C42517100B3FB89 /* Music.swift in Sources */,
+				B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */,
 				B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */,
 				B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */,
 				B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */,
