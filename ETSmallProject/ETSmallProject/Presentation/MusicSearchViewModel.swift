@@ -90,13 +90,10 @@ final class MusicSearchViewModel {
 			return [SectionModel(items: musicItems)]
 		}
 		
-		let loadingSectionDriver: Driver<[SectionModel]> = isLoadingRelay.map { isLoading in
-			return isLoading ? [SectionModel(items: [.loading])] : []
-		}.asDriver(onErrorJustReturn: [SectionModel(items: [.loading])])
-		
 		return Output(
-			dataSourceDriver: Driver.merge(musicSectionDriver, loadingSectionDriver),
-			errorAlertDriver: errorRelay.asDriver(onErrorJustReturn: .unknown)
+			dataSourceDriver: musicSectionDriver,
+			errorAlertDriver: errorRelay.asDriver(onErrorJustReturn: .unknown),
+			isLoadingDriver: isLoadingRelay.asDriver()
 		)
 	}
 	
@@ -120,6 +117,7 @@ extension MusicSearchViewModel {
 	struct Output {
 		let dataSourceDriver: Driver<[SectionModel]>
 		let errorAlertDriver: Driver<MusicError>
+		let isLoadingDriver: Driver<Bool>
 	}
 	
 	struct Constants {
@@ -130,7 +128,6 @@ extension MusicSearchViewModel {
 	
 	enum Item {
 		case music(MusicCollectionViewCellViewModel)
-		case loading
 	}
 	
 	struct SectionModel: SectionModelType {

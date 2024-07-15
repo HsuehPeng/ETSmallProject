@@ -8,6 +8,7 @@ final class MusicSearchViewController: UIViewController {
 	private let searchTextField = SearchTextField()
 	private let searchButton = UIButton()
 	private lazy var collectionView = makeCollectionView()
+	private let loadingView = LoadingView()
 	
 	private let viewModel: MusicSearchViewModel
 	private let disposeBag = DisposeBag()
@@ -48,11 +49,6 @@ final class MusicSearchViewController: UIViewController {
 							as? MusicCollectionViewCell else { return UICollectionViewCell() }
 					cell.configure(with: viewModel)
 					return cell
-				case .loading:
-					guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(LoadingCollectionViewCell.self)", for: indexPath)
-							as? LoadingCollectionViewCell else { return UICollectionViewCell() }
-					cell.configure()
-					return cell
 				}
 			}
 		)
@@ -60,6 +56,11 @@ final class MusicSearchViewController: UIViewController {
 		outPut.dataSourceDriver.drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 		outPut.errorAlertDriver.drive(with: self, onNext: { owner, error in
 			owner.presentErrorAlert(error: error)
+		}).disposed(by: disposeBag)
+		
+		outPut.isLoadingDriver.drive(with: self, onNext: { owner, isLoading in
+			isLoading ? owner.loadingView.startLoading() : owner.loadingView.stopLoading()
+			owner.loadingView.isHidden = !isLoading
 		}).disposed(by: disposeBag)
 	}
 	
@@ -81,6 +82,7 @@ extension MusicSearchViewController {
 		view.addSubview(searchTextField)
 		view.addSubview(searchButton)
 		view.addSubview(collectionView)
+		view.addSubview(loadingView)
 	}
 	
 	private func setupViews() {
@@ -88,6 +90,7 @@ extension MusicSearchViewController {
 		searchTextField.translatesAutoresizingMaskIntoConstraints = false
 		searchButton.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		loadingView.translatesAutoresizingMaskIntoConstraints = false
 		
 		searchTitleLabel.text = MusicSearchViewModel.Constants.searchMusicTitle
 		searchTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -106,7 +109,8 @@ extension MusicSearchViewController {
 		searchButton.backgroundColor = UIColor.black
 		
 		collectionView.register(MusicCollectionViewCell.self, forCellWithReuseIdentifier: "\(MusicCollectionViewCell.self)")
-		collectionView.register(LoadingCollectionViewCell.self, forCellWithReuseIdentifier: "\(LoadingCollectionViewCell.self)")
+		
+		loadingView.isHidden = true
 	}
 	
 	private func setupConstraints() {
@@ -135,6 +139,13 @@ extension MusicSearchViewController {
 			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
+		
+		NSLayoutConstraint.activate([
+			loadingView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 12),
+			loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 	}
 	
