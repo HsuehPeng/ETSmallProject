@@ -5,6 +5,7 @@ protocol MusicManagerUseCaseProtocol {
 	func start(from url: URL)
 	func pause()
 	func resume()
+	func reset()
 }
 
 final class MusicManager: MusicManagerUseCaseProtocol {
@@ -22,5 +23,9 @@ final class MusicManager: MusicManagerUseCaseProtocol {
 	
 	func resume() {
 		player?.play()
+	}
+	
+	func reset() {
+		player = nil
 	}
 }
