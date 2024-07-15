@@ -23,7 +23,6 @@
 		B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */; };
 		B8268B1F2C4131BE00B3FB89 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B1E2C4131BE00B3FB89 /* RxDataSources */; };
 		B8268B212C41320400B3FB89 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B202C41320400B3FB89 /* Differentiator */; };
-		B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */; };
 		B8268B262C42517100B3FB89 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B252C42517100B3FB89 /* Music.swift */; };
 		B8268B282C42537500B3FB89 /* FetchMusicUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */; };
 		B8268B2A2C425E3600B3FB89 /* MusicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B292C425E3600B3FB89 /* MusicError.swift */; };
@@ -66,7 +65,6 @@
 		B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
-		B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8268B252C42517100B3FB89 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCase.swift; sourceTree = "<group>"; };
 		B8268B292C425E3600B3FB89 /* MusicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicError.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
 				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
 				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
-				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
 				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
 				B8268B502C442B6C00B3FB89 /* PlayState.swift */,
 				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
@@ -358,7 +355,6 @@
 				B8268B452C427B1B00B3FB89 /* MusicSearchEndpoint.swift in Sources */,
 				B8268B2C2C425EE700B3FB89 /* ErrorModel.swift in Sources */,
 				B8268AE72C3E5A7A00B3FB89 /* AppDelegate.swift in Sources */,
-				B8268B232C42412E00B3FB89 /* LoadingCollectionViewCell.swift in Sources */,
 				B8268AE92C3E5A7A00B3FB89 /* SceneDelegate.swift in Sources */,
 				B8268B262C42517100B3FB89 /* Music.swift in Sources */,
 				B8268B3E2C42737A00B3FB89 /* HTTPClient.swift in Sources */,
