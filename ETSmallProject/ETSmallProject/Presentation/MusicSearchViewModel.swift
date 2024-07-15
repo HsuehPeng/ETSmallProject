@@ -27,11 +27,13 @@ final class MusicSearchViewModel {
 			let selectedMusic = owner.musicCellVMsRelay.value[selectedIndex].music
 			let previousPlayMusicStateModel = owner.playingMusicStateRelay.value
 			
+			if let prevIndex = previousPlayMusicStateModel.index {
+				owner.musicCellVMsRelay.value[prevIndex].playState = .none
+			}
+	
 			if previousPlayMusicStateModel.index == selectedIndex {
 				switch previousPlayMusicStateModel.state {
-				case .finished:
-					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .start))
-				case .none:
+				case .finished, .none:
 					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .start))
 				case .pause:
 					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .resumed))
