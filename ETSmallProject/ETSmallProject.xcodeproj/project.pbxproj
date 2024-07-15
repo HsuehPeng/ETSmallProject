@@ -40,6 +40,7 @@
 		B8268B4F2C44201100B3FB89 /* MusicManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */; };
 		B8268B512C442B6C00B3FB89 /* PlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B502C442B6C00B3FB89 /* PlayState.swift */; };
 		B8268B532C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */; };
+		B8268B552C44EB4500B3FB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B542C44EB4500B3FB89 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManagerUseCase.swift; sourceTree = "<group>"; };
 		B8268B502C442B6C00B3FB89 /* PlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayState.swift; sourceTree = "<group>"; };
 		B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicRepositoryProtocol.swift; sourceTree = "<group>"; };
+		B8268B542C44EB4500B3FB89 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				B8268B222C42412E00B3FB89 /* LoadingCollectionViewCell.swift */,
 				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
 				B8268B502C442B6C00B3FB89 /* PlayState.swift */,
+				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				B8268B3A2C4270C200B3FB89 /* HTTPMethod.swift in Sources */,
 				B8268B1C2C411C7D00B3FB89 /* MusicSearchViewModel.swift in Sources */,
 				B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */,
+				B8268B552C44EB4500B3FB89 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
