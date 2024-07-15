@@ -196,12 +196,10 @@
 		B8268B482C42B62B00B3FB89 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B8268B562C44EEBB00B3FB89 /* Views */,
 				B8268AEA2C3E5A7A00B3FB89 /* MusicSearchViewController.swift */,
 				B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */,
-				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
-				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
 				B8268B502C442B6C00B3FB89 /* PlayState.swift */,
-				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -221,6 +219,16 @@
 				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B8268B562C44EEBB00B3FB89 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */,
+				B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */,
+				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
