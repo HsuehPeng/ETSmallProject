@@ -43,6 +43,7 @@
 		B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B572C4562AA00B3FB89 /* Music+Extension.swift */; };
 		B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */; };
 		B8268B5E2C46AA3900B3FB89 /* MusicManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */; };
+		B8268B632C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		B8268B572C4562AA00B3FB89 /* Music+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+Extension.swift"; sourceTree = "<group>"; };
 		B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCaseTests.swift; sourceTree = "<group>"; };
 		B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManagerTests.swift; sourceTree = "<group>"; };
+		B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */,
 				B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */,
 				B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */,
+				B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */,
 			);
 			path = ETSmallProjectTests;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B632C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift in Sources */,
 				B8268B5E2C46AA3900B3FB89 /* MusicManagerTests.swift in Sources */,
 				B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */,
 				B8268B0E2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift in Sources */,
