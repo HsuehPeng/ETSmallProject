@@ -3,7 +3,7 @@ import RxSwift
 import RxBlocking
 import ETSmallProject
 
-class RemoteMusicLoaderTests: XCTestCase {
+final class RemoteMusicLoaderTests: XCTestCase {
 	private var sut: RemoteMusicLoader!
 	private var httpClient: MockHTTPClient!
 	private let asyneScheduler = ConcurrentDispatchQueueScheduler(qos: .background)

@@ -133,7 +133,7 @@ extension MusicCollectionViewCell {
 	}
 }
 
-final class MusicCollectionViewCellViewModel {
+final class MusicCollectionViewCellViewModel: Equatable {
 	let music: Music
 	let trackName: String
 	let trackTime: String
@@ -155,5 +155,9 @@ final class MusicCollectionViewCellViewModel {
 		self.imageUrlString = imageUrlString
 		self.longDescription = longDescription
 		self.playState = playState
+	}
+	
+	static func == (lhs: MusicCollectionViewCellViewModel, rhs: MusicCollectionViewCellViewModel) -> Bool {
+		lhs.music == rhs.music && lhs.playState == rhs.playState
 	}
 }

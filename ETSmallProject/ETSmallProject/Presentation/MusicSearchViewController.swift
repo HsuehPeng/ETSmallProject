@@ -35,7 +35,7 @@ final class MusicSearchViewController: UIViewController {
 	private func bindViewModel() {
 		let outPut = viewModel.transform(
 			input: .init(
-				searchTermDriver: searchTextField.rx.text.orEmpty.asDriver(),
+				searchTermDriver: searchTextField.rx.text.orEmpty.asDriver().skip(1),
 				searchButtonTapSignal: searchButton.rx.tap.asSignal(),
 				didTapCellItemSignal: collectionView.rx.itemSelected.asSignal()
 			)

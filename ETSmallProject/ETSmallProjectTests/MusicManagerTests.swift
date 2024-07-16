@@ -2,9 +2,9 @@ import AVFoundation
 import ETSmallProject
 import XCTest
 
-class MusicManagerTests: XCTestCase {
+final class MusicManagerTests: XCTestCase {
 	func test_init_currentItemIsNil() {
-		let (sut, player) = makeSUT()
+		let (_, player) = makeSUT()
 		
 		XCTAssertNil(player.currentItem)
 	}

@@ -43,6 +43,7 @@
 		B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B572C4562AA00B3FB89 /* Music+Extension.swift */; };
 		B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */; };
 		B8268B5E2C46AA3900B3FB89 /* MusicManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */; };
+		B8268B632C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		B8268B572C4562AA00B3FB89 /* Music+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+Extension.swift"; sourceTree = "<group>"; };
 		B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCaseTests.swift; sourceTree = "<group>"; };
 		B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManagerTests.swift; sourceTree = "<group>"; };
+		B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,6 @@
 				B8268B432C427B0800B3FB89 /* Data */,
 				B8268B242C42516700B3FB89 /* Domain */,
 				B8268B482C42B62B00B3FB89 /* Presentation */,
-				B8268B4A2C42B68500B3FB89 /* Common */,
 				B8268AF12C3E5A7B00B3FB89 /* LaunchScreen.storyboard */,
 				B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */,
 				B8268AF42C3E5A7B00B3FB89 /* Info.plist */,
@@ -156,6 +157,7 @@
 				B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */,
 				B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */,
 				B8268B5D2C46AA3900B3FB89 /* MusicManagerTests.swift */,
+				B8268B622C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift */,
 			);
 			path = ETSmallProjectTests;
 			sourceTree = "<group>";
@@ -175,6 +177,7 @@
 				B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */,
 				B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */,
 				B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */,
+				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -182,11 +185,11 @@
 		B8268B382C426FF200B3FB89 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B8268B642C46F30B00B3FB89 /* Infra */,
 				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
 				B8268B3B2C42726B00B3FB89 /* Endpoint.swift */,
 				B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */,
 				B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */,
-				B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -222,14 +225,6 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		B8268B4A2C42B68500B3FB89 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		B8268B562C44EEBB00B3FB89 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +233,14 @@
 				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B8268B642C46F30B00B3FB89 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */,
+			);
+			path = Infra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B632C46CC1E00B3FB89 /* MusicSearchViewModelTests.swift in Sources */,
 				B8268B5E2C46AA3900B3FB89 /* MusicManagerTests.swift in Sources */,
 				B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */,
 				B8268B0E2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift in Sources */,
