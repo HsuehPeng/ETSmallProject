@@ -4,7 +4,7 @@ import RxSwift
 public final class RemoteMusicLoader: FetchMusicRepositoryProtocol {
 	private let httpClient: HTTPClient
 	
-	init(httpClient: HTTPClient) {
+	public init(httpClient: HTTPClient) {
 		self.httpClient = httpClient
 	}
 	

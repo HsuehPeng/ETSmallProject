@@ -1,6 +1,6 @@
 import Foundation
 
-public enum MusicError: Error {
+public enum MusicError: Error, Equatable {
 	case network(NetworkError)
 	case unknown
 	case invalidData

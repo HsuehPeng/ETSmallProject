@@ -16,7 +16,7 @@
 		B8268B002C3E6AD700B3FB89 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B8268AFF2C3E6AD700B3FB89 /* RxCocoa */; };
 		B8268B022C3E6AD700B3FB89 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B012C3E6AD700B3FB89 /* RxRelay */; };
 		B8268B042C3E6AD700B3FB89 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B032C3E6AD700B3FB89 /* RxSwift */; };
-		B8268B0E2C3E6DD700B3FB89 /* ETSmallProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B0D2C3E6DD700B3FB89 /* ETSmallProjectTests.swift */; };
+		B8268B0E2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */; };
 		B8268B162C3E6DF000B3FB89 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = B8268B152C3E6DF000B3FB89 /* RxTest */; };
 		B8268B182C3E70CE00B3FB89 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */; };
 		B8268B1A2C3E8A5000B3FB89 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */; };
@@ -41,6 +41,7 @@
 		B8268B532C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */; };
 		B8268B552C44EB4500B3FB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B542C44EB4500B3FB89 /* LoadingView.swift */; };
 		B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B572C4562AA00B3FB89 /* Music+Extension.swift */; };
+		B8268B5A2C46822B00B3FB89 /* MockMusicSearchJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,7 @@
 		B8268AF22C3E5A7B00B3FB89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8268AF42C3E5A7B00B3FB89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8268B0B2C3E6DD700B3FB89 /* ETSmallProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ETSmallProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8268B0D2C3E6DD700B3FB89 /* ETSmallProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSmallProjectTests.swift; sourceTree = "<group>"; };
+		B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMusicLoaderTests.swift; sourceTree = "<group>"; };
 		B8268B172C3E70CE00B3FB89 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B8268B192C3E8A5000B3FB89 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8268B1B2C411C7D00B3FB89 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicRepositoryProtocol.swift; sourceTree = "<group>"; };
 		B8268B542C44EB4500B3FB89 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B8268B572C4562AA00B3FB89 /* Music+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+Extension.swift"; sourceTree = "<group>"; };
+		B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockMusicSearchJson.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,8 @@
 		B8268B0C2C3E6DD700B3FB89 /* ETSmallProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				B8268B0D2C3E6DD700B3FB89 /* ETSmallProjectTests.swift */,
+				B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */,
+				B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */,
 			);
 			path = ETSmallProjectTests;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B5A2C46822B00B3FB89 /* MockMusicSearchJson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8268B0E2C3E6DD700B3FB89 /* ETSmallProjectTests.swift in Sources */,
+				B8268B0E2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
