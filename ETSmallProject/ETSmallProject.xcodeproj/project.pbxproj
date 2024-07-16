@@ -144,7 +144,6 @@
 				B8268B432C427B0800B3FB89 /* Data */,
 				B8268B242C42516700B3FB89 /* Domain */,
 				B8268B482C42B62B00B3FB89 /* Presentation */,
-				B8268B4A2C42B68500B3FB89 /* Common */,
 				B8268AF12C3E5A7B00B3FB89 /* LaunchScreen.storyboard */,
 				B8268AEF2C3E5A7B00B3FB89 /* Assets.xcassets */,
 				B8268AF42C3E5A7B00B3FB89 /* Info.plist */,
@@ -178,6 +177,7 @@
 				B8268B272C42537500B3FB89 /* FetchMusicUseCase.swift */,
 				B8268B4E2C44201100B3FB89 /* MusicManagerUseCase.swift */,
 				B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */,
+				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -223,14 +223,6 @@
 				B8268AE62C3E5A7A00B3FB89 /* AppDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		B8268B4A2C42B68500B3FB89 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				B8268B2B2C425EE700B3FB89 /* ErrorModel.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		B8268B562C44EEBB00B3FB89 /* Views */ = {
