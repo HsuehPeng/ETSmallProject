@@ -1,4 +1,7 @@
 enum PlayState {
-	case playing
+	case start
+	case finished
+	case resumed
 	case pause
+	case none
 }

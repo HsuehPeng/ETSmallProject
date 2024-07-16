@@ -5,5 +5,4 @@ enum NetworkError: Error {
 	case requestFailed(Error)
 	case invalidResponse
 	case invalidData
-	case decodingError(Error)
 }

@@ -6,21 +6,11 @@ final class URLSessionHTTPClient: HTTPClient {
 	public init(session: URLSession = .init(configuration: .default)) {
 		self.session = session
 	}
-	
-	private struct UnexpectedValuesRepresentation: Error {}
-	
-	private struct URLSessionTaskWrapper: HTTPClientTask {
-		let wrapped: URLSessionTask
-		
-		func cancel() {
-			wrapped.cancel()
-		}
-	}
 
-	func request(endpoint: Endpoint, completion: @escaping (Result<Data, NetworkError>) -> Void) -> HTTPClientTask? {
+	func request(endpoint: Endpoint, completion: @escaping (Result<Data, NetworkError>) -> Void) {
 		guard let urlRequest = endpoint.makeRequest() else {
 			completion(.failure(.invalidRequest))
-			return nil
+			return
 		}
 		
 		let task = session.dataTask(with: urlRequest) { data, response, error in
@@ -43,6 +33,5 @@ final class URLSessionHTTPClient: HTTPClient {
 		}
 			
 		task.resume()
-		return URLSessionTaskWrapper(wrapped: task)
 	}
 }

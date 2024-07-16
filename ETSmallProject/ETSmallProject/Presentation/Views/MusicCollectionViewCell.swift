@@ -35,15 +35,15 @@ final class MusicCollectionViewCell: UICollectionViewCell {
 		}
 		
 		switch viewModel.playState {
+		case .finished, .pause:
+			playTitleLabel.text = "正在播放 ▶️"
+			playTitleLabel.isHidden = false
+		case .resumed, .start:
+			playTitleLabel.text = "正在播放 ⏸️"
+			playTitleLabel.isHidden = false
 		case .none:
 			playTitleLabel.text = ""
 			playTitleLabel.isHidden = true
-		case .playing:
-			playTitleLabel.text = "正在播放 ⏸️"
-			playTitleLabel.isHidden = false
-		case .pause:
-			playTitleLabel.text = "正在播放 ▶️"
-			playTitleLabel.isHidden = false
 		}
 	}
 }
@@ -139,22 +139,7 @@ final class MusicCollectionViewCellViewModel {
 	let trackTime: String
 	let imageUrlString: String?
 	let longDescription: String?
-	private (set) var playState: PlayState?
-	
-	func togglePlayState() {
-		switch playState {
-		case .pause:
-			playState = .playing
-		case .playing:
-			playState = .pause
-		case .none:
-			playState = .playing
-		}
-	}
-	
-	func removePlayState() {
-		playState = nil
-	}
+	var playState: PlayState
 	
 	init(
 		music: Music,
@@ -162,7 +147,7 @@ final class MusicCollectionViewCellViewModel {
 		trackTime: String,
 		imageUrlString: String?,
 		longDescription: String?,
-		playState: PlayState? = nil
+		playState: PlayState = .none
 	) {
 		self.music = music
 		self.trackName = trackName

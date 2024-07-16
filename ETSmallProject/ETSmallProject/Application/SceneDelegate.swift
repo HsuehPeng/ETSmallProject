@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
 		let urlSessionHTTPClient = URLSessionHTTPClient()
-		let fetchMusicUseCase = RemoteFetchMusicUseCase(httpClient: urlSessionHTTPClient)
+		let remoteMusicLoader = RemoteMusicLoader(httpClient: urlSessionHTTPClient)
+		let fetchMusicUseCase = FetchMusicUseCase(fetchMusicRepository: remoteMusicLoader)
 		let musicManager = MusicManager()
 		let viewModel = MusicSearchViewModel(
 			fetchMusicUseCase: fetchMusicUseCase,

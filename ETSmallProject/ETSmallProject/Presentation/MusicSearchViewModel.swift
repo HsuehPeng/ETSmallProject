@@ -11,7 +11,7 @@ final class MusicSearchViewModel {
 	private let musicCellVMsRelay = BehaviorRelay<[MusicCollectionViewCellViewModel]>(value: [])
 	private let errorRelay = PublishRelay<MusicError>()
 	private let isLoadingRelay = BehaviorRelay<Bool>(value: false)
-	private let playingIndexRelay = BehaviorRelay<Int?>(value: nil)
+	private let playingMusicStateRelay = BehaviorRelay<PlayMusicStateModel>(value: .init(index: nil, music: nil, state: .none))
 	
 	init(
 		fetchMusicUseCase: FetchMusicUseCaseProtocol,
@@ -24,28 +24,29 @@ final class MusicSearchViewModel {
 	func transform(input: Input) -> Output {
 		input.didTapCellItemSignal.emit(with: self, onNext: { owner, indexPath in
 			let selectedIndex = indexPath.item
-			let selectedMusicItemVM = owner.musicCellVMsRelay.value[selectedIndex]
+			let selectedMusic = owner.musicCellVMsRelay.value[selectedIndex].music
+			let previousPlayMusicStateModel = owner.playingMusicStateRelay.value
 			
-			guard let previousSelectedIndex = owner.playingIndexRelay.value else {
-				selectedMusicItemVM.togglePlayState()
-				owner.playingIndexRelay.accept(selectedIndex)
-				owner.musicManagerUseCase.start(from: URL(string: selectedMusicItemVM.music.previewUrl)!)
-				return
+			if let prevIndex = previousPlayMusicStateModel.index {
+				owner.musicCellVMsRelay.value[prevIndex].playState = .none
 			}
-			
-			if selectedIndex == previousSelectedIndex {
-				selectedMusicItemVM.togglePlayState()
-				owner.playingIndexRelay.accept(previousSelectedIndex)
-				if selectedMusicItemVM.playState == .playing {
-					owner.musicManagerUseCase.resume()
-				} else if selectedMusicItemVM.playState == .pause {
-					owner.musicManagerUseCase.pause()
+	
+			if previousPlayMusicStateModel.index == selectedIndex {
+				switch previousPlayMusicStateModel.state {
+				case .finished, .none:
+					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .start))
+				case .pause:
+					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .resumed))
+				case .resumed, .start:
+					owner.playingMusicStateRelay.accept(.init(index: selectedIndex, music: selectedMusic, state: .pause))
 				}
 			} else {
-				owner.musicCellVMsRelay.value[previousSelectedIndex].removePlayState()
-				selectedMusicItemVM.togglePlayState()
-				owner.playingIndexRelay.accept(selectedIndex)
-				owner.musicManagerUseCase.start(from: URL(string: selectedMusicItemVM.music.previewUrl)!)
+				let nextplayMusicStateModel = PlayMusicStateModel(
+					index: selectedIndex,
+					music: selectedMusic,
+					state: .start
+				)
+				owner.playingMusicStateRelay.accept(nextplayMusicStateModel)
 			}
 		}).disposed(by: disposebag)
 		
@@ -56,6 +57,7 @@ final class MusicSearchViewModel {
 		.withUnretained(self)
 		.do(onNext: { owner, _ in
 			owner.isLoadingRelay.accept(true)
+			owner.playingMusicStateRelay.accept(.init(index: nil, music: nil, state: .none))
 		})
 		.share()
 		
@@ -66,15 +68,7 @@ final class MusicSearchViewModel {
 
 			switch result {
 			case let .success(musics):
-				let musicCellVMs = musics.map { music in
-					MusicCollectionViewCellViewModel(
-						music: music,
-						trackName: music.trackName,
-						trackTime: owner.formatMilliseconds(music.trackTimeMillis),
-						imageUrlString: music.artworkUrl100,
-						longDescription: music.longDescription
-					)
-				}
+				let musicCellVMs = musics.map { $0.mapToMusicCellViewModel() }
 				owner.musicCellVMsRelay.accept(musicCellVMs)
 			case let .failure(error):
 				owner.errorRelay.accept(error)
@@ -82,31 +76,45 @@ final class MusicSearchViewModel {
 		})
 		.disposed(by: disposebag)
 		
-		let musicSectionDriver: Driver<[SectionModel]> = Driver.combineLatest(
-			musicCellVMsRelay.asDriver(),
-			playingIndexRelay.asDriver()
-		).map { musicCellVMs, _ in
-			let musicItems = musicCellVMs.map({ Item.music($0) })
-			return [SectionModel(items: musicItems)]
+		let playingMusicStateDriver = playingMusicStateRelay.asDriver()
+		let musicCellVMsDriver = musicCellVMsRelay.asDriver()
+		
+		playingMusicStateDriver
+			.drive(with: self, onNext: { owner, musicStateModel in
+				guard let music = musicStateModel.music, let url = URL(string: music.previewUrl) else {
+					owner.musicManagerUseCase.reset()
+					return
+				}
+				switch musicStateModel.state {
+				case .start:
+					owner.musicManagerUseCase.start(from: url)
+				case .pause:
+					owner.musicManagerUseCase.pause()
+				case .resumed:
+					owner.musicManagerUseCase.resume()
+				case .finished, .none:
+					owner.musicManagerUseCase.reset()
+				}
+			}).disposed(by: disposebag)
+		
+		let dataSourceDriver: Driver<[SectionModel]> = Driver.combineLatest(
+			musicCellVMsDriver,
+			playingMusicStateDriver
+		).map { musicCellVMs, stateModel in
+			guard let selectedIndex = stateModel.index else {
+				return [SectionModel(items: musicCellVMs)]
+			}
+			
+			let musicCellVMs = musicCellVMs
+			musicCellVMs[selectedIndex].playState = stateModel.state
+			return [SectionModel(items: musicCellVMs)]
 		}
 		
-		let loadingSectionDriver: Driver<[SectionModel]> = isLoadingRelay.map { isLoading in
-			return isLoading ? [SectionModel(items: [.loading])] : []
-		}.asDriver(onErrorJustReturn: [SectionModel(items: [.loading])])
-		
 		return Output(
-			dataSourceDriver: Driver.merge(musicSectionDriver, loadingSectionDriver),
-			errorAlertDriver: errorRelay.asDriver(onErrorJustReturn: .unknown)
+			dataSourceDriver: dataSourceDriver,
+			errorAlertDriver: errorRelay.asDriver(onErrorJustReturn: .unknown),
+			isLoadingDriver: isLoadingRelay.asDriver()
 		)
-	}
-	
-	private func formatMilliseconds(_ milliseconds: Int) -> String {
-		let totalSeconds = milliseconds / 1000
-		
-		let minutes = totalSeconds / 60
-		let seconds = totalSeconds % 60
-		
-		return String(format: "%02d:%02d", minutes, seconds)
 	}
 }
 
@@ -120,6 +128,7 @@ extension MusicSearchViewModel {
 	struct Output {
 		let dataSourceDriver: Driver<[SectionModel]>
 		let errorAlertDriver: Driver<MusicError>
+		let isLoadingDriver: Driver<Bool>
 	}
 	
 	struct Constants {
@@ -128,21 +137,22 @@ extension MusicSearchViewModel {
 		static let searchButtonTitle = "Search"
 	}
 	
-	enum Item {
-		case music(MusicCollectionViewCellViewModel)
-		case loading
-	}
-	
 	struct SectionModel: SectionModelType {
-		var items: [Item]
+		var items: [MusicCollectionViewCellViewModel]
 
-		init(original: SectionModel, items: [Item]) {
+		init(original: SectionModel, items: [MusicCollectionViewCellViewModel]) {
 			self = original
 			self.items = items
 		}
 		
-		init(items: [Item]) {
+		init(items: [MusicCollectionViewCellViewModel]) {
 			self.items = items
 		}
+	}
+	
+	struct PlayMusicStateModel {
+		let index: Int?
+		let music: Music?
+		let state: PlayState
 	}
 }
