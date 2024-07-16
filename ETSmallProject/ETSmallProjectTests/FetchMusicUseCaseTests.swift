@@ -20,7 +20,6 @@ class FetchMusicUseCaseTests: XCTestCase {
 	}
 
 	func test_execute_withSuccess() {
-		let searchTerm = "test"
 		let fetchResult: Result<[Music], MusicError> = .success([anyMusic()])
 		fetchMusicRepository.stubbedFetchResult = Observable.just(fetchResult)
 
@@ -30,7 +29,6 @@ class FetchMusicUseCaseTests: XCTestCase {
 	}
 	
 	func test_execute_withFailure() {
-		let searchTerm = "test"
 		let fetchResult: Result<[Music], MusicError> = .failure(.unknown)
 		fetchMusicRepository.stubbedFetchResult = Observable.just(fetchResult)
 
@@ -50,6 +48,8 @@ class FetchMusicUseCaseTests: XCTestCase {
 			return stubbedFetchResult
 		}
 	}
+	
+	private let searchTerm = "Test search term"
 	
 	private func anyMusic() -> Music {
 		.init(
