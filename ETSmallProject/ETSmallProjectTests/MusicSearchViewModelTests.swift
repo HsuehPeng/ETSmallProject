@@ -106,6 +106,28 @@ final class MusicSearchViewModelTests: XCTestCase {
 		XCTAssertEqual(results, [.unknown])
 	}
 	
+	func test_searchMusic_isLoadingDriver_isLoadingEvents() {
+		let searchTermObservable: TestableObservable<String> = scheduler.createHotObservable([.next(0, "searchTerm")])
+		let searchButtonTapObservable: TestableObservable<Void> = scheduler.createHotObservable([.next(100, ())])
+		let cellItemTapObservable: TestableObservable<IndexPath> = scheduler.createHotObservable([])
+		mockFetchMusicUseCase.fetchResult = .just(.failure(.unknown))
+		let resultObserver = scheduler.createObserver(Bool.self)
+
+		let output = viewModel.transform(
+			input: .init(
+				searchTermDriver: searchTermObservable.asDriver(onErrorJustReturn: ""),
+				searchButtonTapSignal: searchButtonTapObservable.asSignal(onErrorJustReturn: ()),
+				didTapCellItemSignal: cellItemTapObservable.asSignal(onErrorJustReturn: IndexPath(item: 0, section: 0))
+			)
+		)
+		output.isLoadingDriver.asObservable().subscribe(resultObserver).disposed(by: disposeBag)
+
+		scheduler.start()
+		
+		let results = resultObserver.events.compactMap { $0.value.element }
+		XCTAssertEqual(results, [false, true, false])
+	}
+	
 	class MockFetchMusicUseCase: FetchMusicUseCaseProtocol {
 		var fetchResult: Observable<Result<[Music], MusicError>>?
 		
