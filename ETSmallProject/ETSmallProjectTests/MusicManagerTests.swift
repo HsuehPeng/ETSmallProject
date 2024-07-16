@@ -37,6 +37,17 @@ class MusicManagerTests: XCTestCase {
 		XCTAssertFalse(player.isPlaying)
 	}
 	
+	func test_resume_playerIsPlaying() {
+		let (sut, player) = makeSUT()
+		let url = URL(string: "https://test.com")!
+		
+		sut.start(from: url)
+		sut.pause()
+		sut.resume()
+		
+		XCTAssertTrue(player.isPlaying)
+	}
+	
 	private func makeSUT() -> (sut: MusicManager, view: MockAVPlayer) {
 		let player = MockAVPlayer()
 		let sut = MusicManager(player: player)
