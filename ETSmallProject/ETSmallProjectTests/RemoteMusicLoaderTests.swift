@@ -51,6 +51,27 @@ class RemoteMusicLoaderTests: XCTestCase {
 			XCTFail("Expected failure with invalid data, but got \(String(describing: result))")
 		}
 	}
+	
+	func test_fetch_withNetworkError_emitsFailure() {
+		let searchTerm = "test"
+		let expectedNetworkError = NetworkError.invalidResponse
+		httpClient.stubbedRequestResult = .failure(expectedNetworkError)
+		
+		let fetchObservable = sut.fetch(searchTerm: searchTerm).subscribe(on: asyneScheduler)
+		let result = try? fetchObservable.observe(on: MainScheduler.instance).toBlocking().first()
+
+		switch result {
+		case let .failure(musicError):
+			switch musicError {
+			case let .network(returnedNetworkError):
+				XCTAssertEqual(expectedNetworkError, returnedNetworkError)
+			default:
+				XCTFail("Expected failure with network error, but got \(String(describing: result))")
+			}
+		default:
+			XCTFail("Expected failure with network error, but got \(String(describing: result))")
+		}
+	}
 
 	private func validMusicData() -> Data {
 		let item: [String: Any] = [
