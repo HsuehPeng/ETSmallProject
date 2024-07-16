@@ -185,11 +185,11 @@
 		B8268B382C426FF200B3FB89 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B8268B642C46F30B00B3FB89 /* Infra */,
 				B8268B392C4270C200B3FB89 /* HTTPMethod.swift */,
 				B8268B3B2C42726B00B3FB89 /* Endpoint.swift */,
 				B8268B3D2C42737A00B3FB89 /* HTTPClient.swift */,
 				B8268B3F2C4274EC00B3FB89 /* NetworkError.swift */,
-				B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -233,6 +233,14 @@
 				B8268B542C44EB4500B3FB89 /* LoadingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B8268B642C46F30B00B3FB89 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				B8268B412C42762800B3FB89 /* URLSessionHTTPClient.swift */,
+			);
+			path = Infra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
