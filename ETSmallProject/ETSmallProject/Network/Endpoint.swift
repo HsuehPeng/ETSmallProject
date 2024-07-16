@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Endpoint {
+public protocol Endpoint {
 	var baseURL: URL { get }
 	var path: String { get }
 	var method: HTTPMethod { get }
@@ -12,7 +12,7 @@ protocol Endpoint {
 }
 
 extension Endpoint {
-	func makeRequest() -> URLRequest? {
+	public func makeRequest() -> URLRequest? {
 		var components = URLComponents()
 		components.scheme = baseURL.scheme
 		components.host = baseURL.host

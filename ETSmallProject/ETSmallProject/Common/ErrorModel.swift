@@ -1,4 +1,4 @@
-struct ErrorModel {
-	let title: String
-	let description: String
+public struct ErrorModel {
+	public let title: String
+	public let description: String
 }

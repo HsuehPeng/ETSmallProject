@@ -1,19 +1,19 @@
 import RxSwift
 
-protocol FetchMusicUseCaseProtocol {
+public protocol FetchMusicUseCaseProtocol {
 	typealias FetchResult = Result<[Music], MusicError>
 	
 	func execute(searchTerm: String) -> Observable<FetchResult>
 }
 
-final class FetchMusicUseCase: FetchMusicUseCaseProtocol {
+public final class FetchMusicUseCase: FetchMusicUseCaseProtocol {
 	private let fetchMusicRepository: FetchMusicRepositoryProtocol
 	
-	init(fetchMusicRepository: FetchMusicRepositoryProtocol) {
+	public init(fetchMusicRepository: FetchMusicRepositoryProtocol) {
 		self.fetchMusicRepository = fetchMusicRepository
 	}
 	
-	func execute(searchTerm: String) -> Observable<FetchResult> {
+	public func execute(searchTerm: String) -> Observable<FetchResult> {
 		fetchMusicRepository.fetch(searchTerm: searchTerm)
 	}
 }

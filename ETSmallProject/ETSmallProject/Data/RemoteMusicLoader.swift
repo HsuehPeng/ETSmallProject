@@ -1,14 +1,14 @@
 import Foundation
 import RxSwift
 
-final class RemoteMusicLoader: FetchMusicRepositoryProtocol {
+public final class RemoteMusicLoader: FetchMusicRepositoryProtocol {
 	private let httpClient: HTTPClient
 	
-	init(httpClient: HTTPClient) {
+	public init(httpClient: HTTPClient) {
 		self.httpClient = httpClient
 	}
 	
-	func fetch(searchTerm: String) -> Observable<FetchResult> {
+	public func fetch(searchTerm: String) -> Observable<FetchResult> {
 		let endPoint = MusicSearchEndpoint(searchTerm: searchTerm)
 		return Observable.create { [weak self] observer in
 			self?.httpClient.request(endpoint: endPoint) { result in

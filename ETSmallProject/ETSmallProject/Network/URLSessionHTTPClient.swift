@@ -1,13 +1,13 @@
 import Foundation
 
-final class URLSessionHTTPClient: HTTPClient {
+public final class URLSessionHTTPClient: HTTPClient {
 	private let session: URLSession
 	
 	public init(session: URLSession = .init(configuration: .default)) {
 		self.session = session
 	}
 
-	func request(endpoint: Endpoint, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+	public func request(endpoint: Endpoint, completion: @escaping (Result<Data, NetworkError>) -> Void) {
 		guard let urlRequest = endpoint.makeRequest() else {
 			completion(.failure(.invalidRequest))
 			return
