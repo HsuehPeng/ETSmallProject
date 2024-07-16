@@ -137,7 +137,7 @@ extension MusicSearchViewModel {
 		static let searchButtonTitle = "Search"
 	}
 	
-	struct SectionModel: SectionModelType {
+	struct SectionModel: SectionModelType, Equatable {
 		var items: [MusicCollectionViewCellViewModel]
 
 		init(original: SectionModel, items: [MusicCollectionViewCellViewModel]) {
