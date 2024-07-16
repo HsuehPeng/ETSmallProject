@@ -128,6 +128,39 @@ final class MusicSearchViewModelTests: XCTestCase {
 		XCTAssertEqual(results, [false, true, false])
 	}
 	
+	func test_didTapCellItem_mutilpleTaps_musicManagerFunctionCalls() {
+		let searchTermObservable: TestableObservable<String> = scheduler.createHotObservable([.next(0, "searchTerm")])
+		let searchButtonTapObservable: TestableObservable<Void> = scheduler.createHotObservable([.next(100, ())])
+		let cellItemTapObservable: TestableObservable<IndexPath> = scheduler.createHotObservable(
+			[
+				.next(200, IndexPath(item: 0, section: 0)),
+				.next(300, IndexPath(item: 0, section: 0)),
+				.next(400, IndexPath(item: 0, section: 0)),
+				.next(500, IndexPath(item: 1, section: 0)),
+				.next(600, IndexPath(item: 1, section: 0)),
+				.next(700, IndexPath(item: 1, section: 0))
+			]
+		)
+		let musics: [Music] = [
+			.init(trackName: "1", trackTimeMillis: 0, artworkUrl100: "", longDescription: "", previewUrl: "https://test.com"),
+			.init(trackName: "2", trackTimeMillis: 0, artworkUrl100: "", longDescription: "", previewUrl: "https://test.com")
+		]
+		mockFetchMusicUseCase.fetchResult = .just(.success(musics))
+		
+		let output = viewModel.transform(
+			input: .init(
+				searchTermDriver: searchTermObservable.asDriver(onErrorJustReturn: ""),
+				searchButtonTapSignal: searchButtonTapObservable.asSignal(onErrorJustReturn: ()),
+				didTapCellItemSignal: cellItemTapObservable.asSignal(onErrorJustReturn: IndexPath(item: 0, section: 0))
+			)
+		)
+		output.isLoadingDriver.asObservable().subscribe().disposed(by: disposeBag)
+		
+		scheduler.start()
+
+		XCTAssertEqual(musicManagerUseCaseSpy.actions, [.reset, .reset, .start, .pause, .resume, .start, .pause, .resume])
+	}
+	
 	class MockFetchMusicUseCase: FetchMusicUseCaseProtocol {
 		var fetchResult: Observable<Result<[Music], MusicError>>?
 		
