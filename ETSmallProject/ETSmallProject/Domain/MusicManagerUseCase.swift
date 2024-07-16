@@ -9,23 +9,27 @@ public protocol MusicManagerUseCaseProtocol {
 }
 
 public final class MusicManager: MusicManagerUseCaseProtocol {
-	private var player: AVPlayer?
+	private let player: AVPlayer
 
 	public func start(from url: URL) {
 		let playerItem = AVPlayerItem(url: url)
-		player = AVPlayer(playerItem: playerItem)
-		player?.play()
+		player.replaceCurrentItem(with: playerItem)
+		player.play()
 	}
 	
 	public func pause() {
-		player?.pause()
+		player.pause()
 	}
 	
 	public func resume() {
-		player?.play()
+		player.play()
 	}
 	
 	public func reset() {
-		player = nil
+		player.replaceCurrentItem(with: nil)
+	}
+	
+	public init(player: AVPlayer = .init(playerItem: nil)) {
+		self.player = player
 	}
 }
