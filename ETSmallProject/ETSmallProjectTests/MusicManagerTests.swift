@@ -9,6 +9,15 @@ class MusicManagerTests: XCTestCase {
 		XCTAssertNil(player.currentItem)
 	}
 	
+	func test_start_currentItemIsNotNil() {
+		let (sut, player) = makeSUT()
+		let url = URL(string: "https://test.com")!
+		
+		sut.start(from: url)
+		
+		XCTAssertNotNil(player.currentItem)
+	}
+	
 	private func makeSUT() -> (sut: MusicManager, view: MockAVPlayer) {
 		let player = MockAVPlayer()
 		let sut = MusicManager(player: player)
