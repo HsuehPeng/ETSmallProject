@@ -66,14 +66,12 @@ class MusicManagerTests: XCTestCase {
 	
 	private class MockAVPlayer: AVPlayer {
 		private(set) var isPlaying = false
-		private(set) var didPause = false
 
 		override func play() {
 			isPlaying = true
 		}
 
 		override func pause() {
-			didPause = true
 			isPlaying = false
 		}
 	}
