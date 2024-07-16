@@ -41,7 +41,7 @@
 		B8268B532C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */; };
 		B8268B552C44EB4500B3FB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B542C44EB4500B3FB89 /* LoadingView.swift */; };
 		B8268B582C4562AA00B3FB89 /* Music+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B572C4562AA00B3FB89 /* Music+Extension.swift */; };
-		B8268B5A2C46822B00B3FB89 /* MockMusicSearchJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */; };
+		B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +84,7 @@
 		B8268B522C44E5E000B3FB89 /* FetchMusicRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicRepositoryProtocol.swift; sourceTree = "<group>"; };
 		B8268B542C44EB4500B3FB89 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B8268B572C4562AA00B3FB89 /* Music+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+Extension.swift"; sourceTree = "<group>"; };
-		B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockMusicSearchJson.json; sourceTree = "<group>"; };
+		B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMusicUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B8268B0D2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift */,
-				B8268B592C46822B00B3FB89 /* MockMusicSearchJson.json */,
+				B8268B5B2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift */,
 			);
 			path = ETSmallProjectTests;
 			sourceTree = "<group>";
@@ -344,7 +344,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8268B5A2C46822B00B3FB89 /* MockMusicSearchJson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8268B5C2C469DCB00B3FB89 /* FetchMusicUseCaseTests.swift in Sources */,
 				B8268B0E2C3E6DD700B3FB89 /* RemoteMusicLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
