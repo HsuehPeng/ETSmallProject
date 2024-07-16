@@ -51,7 +51,7 @@ final class MusicSearchViewModel {
 		}).disposed(by: disposebag)
 		
 		let searchMusicObservable = Observable.merge([
-			input.searchTermDriver.skip(1).distinctUntilChanged().debounce(.milliseconds(300)).asObservable(),
+			input.searchTermDriver.distinctUntilChanged().debounce(.milliseconds(300)).asObservable(),
 			input.searchButtonTapSignal.withLatestFrom(input.searchTermDriver).asObservable()
 		])
 		.withUnretained(self)
