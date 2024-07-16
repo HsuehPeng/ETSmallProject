@@ -27,6 +27,16 @@ class MusicManagerTests: XCTestCase {
 		XCTAssertTrue(player.isPlaying)
 	}
 	
+	func test_pause_playerIsNotPlaying() {
+		let (sut, player) = makeSUT()
+		let url = URL(string: "https://test.com")!
+		
+		sut.start(from: url)
+		sut.pause()
+		
+		XCTAssertFalse(player.isPlaying)
+	}
+	
 	private func makeSUT() -> (sut: MusicManager, view: MockAVPlayer) {
 		let player = MockAVPlayer()
 		let sut = MusicManager(player: player)
