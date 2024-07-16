@@ -1,9 +1,9 @@
 import Foundation
 
-struct Music: Equatable {
-	let trackName: String
-	let trackTimeMillis: Int
-	let artworkUrl100: String?
-	let longDescription: String?
-	let previewUrl: String
+public struct Music: Equatable {
+	public let trackName: String
+	public let trackTimeMillis: Int
+	public let artworkUrl100: String?
+	public let longDescription: String?
+	public let previewUrl: String
 }

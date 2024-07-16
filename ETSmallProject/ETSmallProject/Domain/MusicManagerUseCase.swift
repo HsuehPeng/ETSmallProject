@@ -1,31 +1,31 @@
 import AVFoundation
 import Foundation
 
-protocol MusicManagerUseCaseProtocol {
+public protocol MusicManagerUseCaseProtocol {
 	func start(from url: URL)
 	func pause()
 	func resume()
 	func reset()
 }
 
-final class MusicManager: MusicManagerUseCaseProtocol {
+public final class MusicManager: MusicManagerUseCaseProtocol {
 	private var player: AVPlayer?
 
-	func start(from url: URL) {
+	public func start(from url: URL) {
 		let playerItem = AVPlayerItem(url: url)
 		player = AVPlayer(playerItem: playerItem)
 		player?.play()
 	}
 	
-	func pause() {
+	public func pause() {
 		player?.pause()
 	}
 	
-	func resume() {
+	public func resume() {
 		player?.play()
 	}
 	
-	func reset() {
+	public func reset() {
 		player = nil
 	}
 }

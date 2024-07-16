@@ -1,3 +1,3 @@
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
 	case get = "GET"
 }

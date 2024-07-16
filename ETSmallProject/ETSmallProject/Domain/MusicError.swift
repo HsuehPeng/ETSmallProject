@@ -1,11 +1,11 @@
 import Foundation
 
-enum MusicError: Error {
+public enum MusicError: Error {
 	case network(NetworkError)
 	case unknown
 	case invalidData
 	
-	var errorModel: ErrorModel {
+	public var errorModel: ErrorModel {
 		switch self {
 		case let .network(networkError):
 			return ErrorModel(title: "Search fail", description: networkError.localizedDescription)
