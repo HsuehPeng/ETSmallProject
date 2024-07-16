@@ -3,7 +3,7 @@ import RxSwift
 import RxBlocking
 import ETSmallProject
 
-class FetchMusicUseCaseTests: XCTestCase {
+final class FetchMusicUseCaseTests: XCTestCase {
 	private var sut: FetchMusicUseCase!
 	private var fetchMusicRepository: MockFetchMusicRepository!
 
