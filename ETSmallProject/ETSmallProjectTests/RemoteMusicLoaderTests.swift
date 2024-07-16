@@ -36,6 +36,22 @@ class RemoteMusicLoaderTests: XCTestCase {
 		}
 	}
 	
+	func test_fetch_withInvalidData_emitsFailure() {
+		let searchTerm = "test"
+		let data = invalidMusicData()
+		httpClient.stubbedRequestResult = .success(data)
+		
+		let fetchObservable = sut.fetch(searchTerm: searchTerm).subscribe(on: asyneScheduler)
+		let result = try? fetchObservable.observe(on: MainScheduler.instance).toBlocking().first()
+		
+		switch result {
+		case .failure(let error):
+			XCTAssertEqual(error, .invalidData)
+		default:
+			XCTFail("Expected failure with invalid data, but got \(String(describing: result))")
+		}
+	}
+
 	private func validMusicData() -> Data {
 		let item: [String: Any] = [
 			"trackId": 111111,
